@@ -1,0 +1,62 @@
+.face-frame {
+    position: absolute;
+    inset: 18% 31%;
+}
+.face-frame span {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: rgba(255, 255, 255, 0.94);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+.face-frame span:nth-child(1) {
+    top: 0;
+    left: 0;
+    border-top: 3px solid;
+    border-left: 3px solid;
+}
+.face-frame span:nth-child(2) {
+    top: 0;
+    right: 0;
+    border-top: 3px solid;
+    border-right: 3px solid;
+}
+.face-frame span:nth-child(3) {
+    bottom: 0;
+    left: 0;
+    border-bottom: 3px solid;
+    border-left: 3px solid;
+}
+.face-frame span:nth-child(4) {
+    bottom: 0;
+    right: 0;
+    border-bottom: 3px solid;
+    border-right: 3px solid;
+}
+.scan-grid {
+    background-image: linear-gradient(rgba(85, 211, 226, 0.24) 1px, transparent 1px), linear-gradient(90deg, rgba(85, 211, 226, 0.24) 1px, transparent 1px);
+    background-size: 16px 16px;
+    mix-blend-mode: screen;
+    opacity: 0.5;
+}
+.scan-beam {
+    background: linear-gradient(180deg, transparent 0%, rgba(76, 132, 255, 0.08) 38%, rgba(43, 212, 212, 0.55) 50%, rgba(76, 132, 255, 0.08) 62%, transparent 100%);
+    animation: beamSweep 3.2s ease-in-out infinite;
+    box-shadow: 0 0 28px rgba(64, 214, 230, 0.38), inset 0 0 12px rgba(255, 255, 255, 0.25);
+}
+.scan-ripple {
+    border-radius: 24px;
+    border: 1px solid rgba(57, 230, 230, 0.35);
+    animation: ripplePulse 2.2s ease-in-out infinite;
+}
+.scan-points i {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #8ffbff;
+    box-shadow: 0 0 10px rgba(143, 251, 255, 0.9);
+    animation: pointBlink 1.4s ease-in-out infinite;
+}
+
+

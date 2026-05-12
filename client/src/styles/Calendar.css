@@ -1,0 +1,83 @@
+.mc-card {
+    padding: 21px 20px;
+    border-radius: 5px;
+    background: #ffffff;
+    border: 1px solid #eef0f7;
+    box-shadow: 0 4px 20px -4px rgba(80, 100, 160, 0.08);
+    color: #1a1d29;
+    box-sizing: border-box;
+}
+
+.mc-title {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  line-height: 23px;
+  font-weight: 500;
+  color: #1a1d29;
+}
+
+.mc-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.mc-weekday {
+text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #9aa0ad;
+}
+
+.mc-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 0fr);
+  gap: 4px;
+}
+
+.mc-day {
+display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    margin: 0 auto;
+    border: none;
+    background: transparent;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a1d29;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0;
+    transition: background-color 0.15s ease;
+}
+
+.mc-day:hover:not(:disabled):not(.mc-day--selected) {
+  background: #f3f4f8;
+}
+
+.mc-day--muted {
+  color: #c8ccd6;
+  cursor: default;
+}
+
+.mc-day--selected {
+  background: #3b3f4a;
+  color: #ffffff;
+      background: linear-gradient(0deg, #403939 0%, #8f8d8d 100%);
+}
+
+.mc-day--selected:hover {
+  background: #3b3f4a;
+}
+
+.mc-footer {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: #3B82F6;
+}

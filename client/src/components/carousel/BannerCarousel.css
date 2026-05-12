@@ -1,0 +1,135 @@
+/* ===== Container ===== */
+.carousel {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  user-select: none;
+}
+
+/* ===== Track ===== */
+.carousel__track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.6s ease;
+}
+
+/* ===== Slides — slide transition ===== */
+.carousel__slide {
+  flex: 0 0 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== Image ===== */
+.carousel__image {
+  width: 100%;
+  /* height: 100%;
+  object-fit: cover; */
+  display: block;
+}
+
+
+
+/* ===== Text content ===== */
+.carousel__content {
+  position: absolute;
+  bottom: 15%;
+  left: 6%;
+  color: #fff;
+  max-width: 520px;
+  animation: fadeUp 0.6s ease both;
+}
+
+.carousel__slide--active .carousel__content {
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.carousel__title {
+  margin: 0 0 10px;
+  font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.carousel__subtitle {
+  margin: 0 0 20px;
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+  opacity: 0.9;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.carousel__cta {
+  padding: 10px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.carousel__cta:hover {
+  background: #fff;
+  color: #111;
+}
+
+/* ===== Dot indicators ===== */
+.carousel__dots {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.carousel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.carousel__dot--active {
+  background: #fff;
+  transform: scale(1.25);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .carousel__track {
+    aspect-ratio: 16 / 9;
+  }
+
+  .carousel__arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 2rem;
+  }
+
+  .carousel__content {
+    bottom: 20%;
+    left: 5%;
+  }
+}

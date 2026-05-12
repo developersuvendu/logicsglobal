@@ -1,0 +1,124 @@
+.left-col {
+    width: 255px;
+     border-right: 1px solid #e5e5e5;
+      background-color: #fff;
+      position: relative;
+    transition: width 0.2s;
+}
+.right-col {
+    width: calc(100% - 255px);
+}
+.logo {
+    width: 105px;
+}
+.sidebar {
+     
+          padding: 20px 16px;
+          padding-top: 12px;
+              height: calc(100% - 107px);
+              display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 0px;
+    padding-top:0px;
+   
+}
+.nav  {
+    display: flex;
+    flex-direction: column;
+}
+.nav-item{
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #45556c;
+    color: #64748b;
+        color: #2d3853;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    gap: 12px;
+    border-radius: 18px;
+       
+}
+.nav-item span {
+    font-size: 15px;
+     /* line-height: 1.42857; */
+         line-height: 20px;
+    vertical-align: middle;
+    /* font-weight: 500; */
+}
+.nav-item .nav-icon {
+        /* height: 19px;
+    width: 19px; */
+            height: 16px;
+    width: 16px;
+
+    height: 18px;
+    width: 18px;
+    stroke-width: 1.6px;
+}
+.logo_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 18px;
+    padding-bottom: 10px;
+    height: 100px;
+}
+.nav-item.active {
+background-color: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #0f1729;
+    font-weight: 600;
+}
+.sidebar__toggle {
+    border: 1px solid #e2e8f0cc;
+    border-radius: 3.40282e38px;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -13px;
+    top: 76px;
+    background-color: #fff;
+    cursor:pointer;
+}
+
+.sidebar__toggle svg {
+    width: 16px;
+    height: 16px;
+    color: #314158;
+    pointer-events: none;
+}
+.left-col.collapsed{
+        width: 76px;
+}
+.social-logo {
+    width: 25px;
+}
+
+/* .lucide-briefcase.nav-icon {
+    height: 19px;
+    width: 19px;
+stroke-width: 1.6px;
+}
+.lucide-user-check.nav-icon {
+    height: 20px;
+    width: 20px;
+    stroke-width: 1.6px;
+}
+.lucide-laptop-minimal-check.nav-icon {
+    height: 20px;
+    width: 20px;
+stroke-width: 1.6px;
+}
+.lucide-tv-minimal-play.nav-icon {
+    height: 19px;
+    width: 19px;
+stroke-width: 1.6px;
+} */

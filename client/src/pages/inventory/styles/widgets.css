@@ -1,0 +1,157 @@
+.inventory-main-grid {
+  /* display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  margin-top: 24px; */
+  display: flex;
+  gap: 15px;
+  width: 100%;
+    margin-top: 15px;
+}
+.inventory-main-left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 70%;
+}
+.inventory-main-right-section {
+   display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 30%;
+}
+
+/* Widget Card */
+.widget-card {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  padding: 22px;
+  /* margin-bottom: 24px; */
+  transition: 0.2s ease;
+}
+.widget-card:hover {
+  transform: translateY(-2px);
+}
+
+.widget-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+/* Quick Actions */
+.quick-actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.quick-action-item {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px 16px;
+
+  background: #f9fafb;
+  border: 1px solid #f1f5f9;
+  border-radius: 14px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.quick-action-item:hover {
+  background: #f3f4f6;
+}
+
+.quick-action-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quick-action-icon {
+  width: 38px;
+  height: 38px;
+
+  border-radius: 10px;
+  background: #e8f0ff;
+  color: #2563eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quick-action-item span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Alerts */
+.alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.alert-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+
+  padding: 14px;
+  border-radius: 14px;
+
+  background: #f9fafb;
+}
+
+.alert-icon {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alert-icon.green {
+  background: #e7f8ee;
+  color: #16a34a;
+}
+
+.alert-icon.orange {
+  background: #fff4e6;
+  color: #ea580c;
+}
+
+.alert-icon.red {
+  background: #ffe8e8;
+  color: #dc2626;
+}
+
+.alert-item h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.alert-item p {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .inventory-main-grid {
+    grid-template-columns: 1fr;
+  }
+}

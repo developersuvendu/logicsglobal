@@ -1,0 +1,227 @@
+.timesheet-stats {
+  display: grid;
+
+  grid-template-columns:
+    1.15fr
+    1.15fr
+    1.15fr
+    1.15fr
+    0.85fr;
+  gap: 14px;
+}
+
+.timesheet-stats-card {
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  padding: 16px 18px;
+  min-height: 108px;
+  transition: 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.timesheet-stats-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.timesheet-stats-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* ICON */
+
+.timesheet-stats-icon {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.timesheet-stats-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* COLORS */
+
+.timesheet-stats-icon.purple {
+  background: #efe9ff;
+  color: #6d28d9;
+}
+
+.timesheet-stats-icon.green {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.timesheet-stats-icon.orange {
+  background: #ffedd5;
+  color: #ea580c;
+}
+
+.timesheet-stats-icon.blue {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.timesheet-stats-icon.success {
+  background: #e0f2fe;
+  color: #0284c7;
+  display: none;
+}
+
+/* INFO */
+
+.timesheet-stats-info {
+  flex: 1;
+}
+
+.timesheet-stats-info span {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+/* VALUE ROW */
+
+.timesheet-stats-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 2px;
+  flex-direction: column;
+}
+.compliance-value {
+  display: none;
+}
+
+.timesheet-stats-info h3 {
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #111;
+
+  white-space: nowrap;
+}
+
+.timesheet-stats-info p {
+  font-size: 12px;
+  color: #8b8b8b;
+}
+
+/* COMPLIANCE TEXT */
+
+.timesheet-stats-info small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #16a34a;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* BOTTOM */
+
+.timesheet-stats-bottom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 6px;
+  background: #ededed;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.progress-fill.purple {
+  background: #5b5cf6;
+}
+
+.progress-fill.green {
+  background: #22c55e;
+}
+
+.progress-fill.orange {
+  background: #fb923c;
+}
+
+.progress-fill.blue {
+  background: #60a5fa;
+}
+
+
+.timesheet-stats-bottom span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+}
+
+
+.compliance-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.gauge-value {
+  font-size: 12px;
+  font-weight: 700;
+  color: #111;
+}
+.gauge-value {
+  position: absolute;
+
+  left: 50%;
+  top: 14px;
+
+  transform: translateX(-50%);
+
+  font-size: 13px;
+  font-weight: 700;
+  color: #111;
+}
+
+
+
+
+@media (max-width: 1400px) {
+  .timesheet-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .timesheet-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .timesheet-stats {
+    grid-template-columns: 1fr;
+  }
+}

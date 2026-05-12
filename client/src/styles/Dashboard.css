@@ -1,0 +1,418 @@
+.dashboard-wrapper {
+    /* padding: 20px 17px; */
+        height: calc(100% - 52px);
+    display: flex;
+    overflow-y:auto;
+}
+.dashboard{
+       width: 75%;
+       padding: 20px 17px;
+           overflow: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #e5e5e5;
+}
+/*----------------------------------------------Profile Overview-----------------------------------------*/
+.profile-overview-wrapper {
+    width: 25%;
+    padding: 20px 17px;
+    /* padding-left: 0px; */
+}
+.profile-overview {
+    background-color: #fff;
+    border: 1px solid red;
+    padding: 12px 15px;
+    border-radius: 7px;
+    border: 1px solid #e5e5e5;
+    height: 50%;
+}
+.heading-text {
+    color: #0f172b;
+   font-size: 30px;
+    line-height: 30px;
+    font-weight: 600;
+        letter-spacing: 0.1px;
+}
+/*----------------------------------------Profile Overview-----------------------------------------*/
+.profile-overview-image {
+    width: 100px;
+    border-radius: 50%;
+    margin: 10px auto;
+    display: block;
+    
+}
+    .progress-ring {
+    position: relative;
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    --progress: 75%;
+    background: conic-gradient(#4caf50 var(--progress), #cfcfcf var(--progress));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s ease;
+    margin: 0px auto;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    }
+
+    /* Inner circle (ring effect) */
+    .progress-ring::before {
+    content: "";
+    position: absolute;
+    width: 87px;
+    height: 87px;
+    background: #ffffff;
+    border-radius: 50%;
+    }
+
+    /* Profile image */
+    .progress-ring img {
+    position: relative;
+    width: 81px;
+    height: 81px;
+    border-radius: 50%;
+    object-fit: cover;
+    }
+
+.announcement-div {
+    height: 150px;
+    background: #ecf0ff;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: 1px solid #cfd8f7;
+    position: relative ;
+    padding: 25px;
+        padding-right: 237px;
+}
+.banner-illustration {
+    /* width: 171px;
+    top: 50%;
+    position: absolute;
+    transform: translateY(-50%);
+    right: 0px; */
+
+        width: 243px;
+    top: 50%;
+    position: absolute;
+        transform: translateY(-40%);
+    right: 0px;
+}
+.banner-description-text {
+        margin-top: 8px;
+    color: #0a193f;
+    line-height: 22px;
+}
+/*------------------------------------------------------Banner Image CSS-----------------------------------------*/
+.banner-image {
+    width: 100%;
+    height: 150px;
+}
+.banner-heading-text {
+    color: #152e6f;
+}
+.banner-description-text {
+
+}
+/*---------------------------------------------------Card CSS-----------------------------------------*/
+.leave-card-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.leave-card {
+    background-color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    /* background: linear-gradient(135deg, rgb(124, 58, 237), rgb(147, 51, 234), rgb(67, 56, 202)); */
+        width: 25%;
+        position: relative;
+        box-shadow: rgb(103 103 129 / 20%) 0px 20px 29px 0px;
+}
+.leave-card::after {
+content: "";
+    position: absolute;
+    background-color: #ffffff1a;
+    top: -50px;
+    /* left: 0; */
+    right: -33px;
+    bottom: 0;
+    border-radius: 10px;
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+}
+.leave-card::before {
+    content: "";
+    position: absolute;
+    background-color: #ffffff1a;
+    top: -67px;
+    /* left: 0; */
+    right: -29px;
+    bottom: 0;
+    border-radius: 10px;
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+}
+.leave-card:nth-child(1) {
+background: linear-gradient(135deg, rgb(249, 115, 22), rgb(234, 88, 12), rgb(220, 38, 38));
+}
+.leave-card:nth-child(2) {
+    background: linear-gradient(135deg, rgb(124, 58, 237), rgb(147, 51, 234), rgb(67, 56, 202));
+}
+.leave-card:nth-child(3) {
+background: linear-gradient(135deg, rgb(16, 185, 129), rgb(22, 163, 74), rgb(15, 118, 110));
+}
+.leave-card:nth-child(4) {
+background: linear-gradient(135deg, rgb(236, 72, 153), rgb(225, 29, 72), rgb(190, 18, 60));
+}
+.leave-card .leave-card-heading{
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: 600;
+}
+.leave-card .leave-card-text {
+    font-size: 30px;
+    font-weight: 900;
+        color: rgb(253, 224, 71);
+    font-size: 48px;
+}
+.rating-wrapper {
+display: flex;
+justify-content: center;
+}
+.rating-wrapper .rating-text svg{
+   width: 30px;
+    height: 30px;
+}
+
+
+/* To Do Section CSS */
+.todo-wrapper {
+    margin-top: 20px;
+
+}
+.todo-message-card {
+display: flex;
+    justify-content: space-between;
+    padding: 11px 10px;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
+}
+.todo-heading-text-wrapper{
+    display: flex;
+    align-items: center;
+        margin-bottom: 14px;
+}
+.todo-heading-text,
+.recent-activity-heading-text {
+        font-size: 20px;
+            line-height: 20px;
+}
+.todo-notification-count {
+    height: 15px;
+    width: 15px;
+    background-color: #f24568;
+    font-size: 10px;
+    line-height: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 6px;
+    color: #fff;
+    position: relative;
+    top: 1px;
+}
+.todo-message {
+    line-height: 19px;
+}
+.todo-card-close-icon {
+        color: #8f9aa9;
+    height: 19px;
+    width: 19px;
+    /* color: #6a68fa; */
+    position: relative;
+    cursor:pointer
+}
+
+/* Quick Links Section CSS */
+.quick-link-wrapper {
+        margin-top: 20px;
+}
+.quick-link-row{
+display: flex;
+    gap: 15px;
+}
+.quick-link-columns {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
+    min-width: 150px;
+    cursor: pointer; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 2px solid #ffffff;
+    background-color: #f8fafc;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
+    min-width: 150px;
+    cursor: pointer;
+}
+p.quick-link-text {
+    margin-top: 4px;
+}
+.quick-link-icon {
+    width: 49px;
+    height: 49px;
+}
+.quick-link-heading-text {
+font-size: 20px;
+    line-height: 20px;
+        margin-bottom: 14px;
+}
+.gym-bill .quick-link-icon{
+position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 50%;
+    transform: translate(-50%, -72%);
+    left: 50%;
+}
+
+.gym-bill .quick-link-text{
+    position: absolute;
+    bottom: 18px;
+}
+.quick-link-columns.gym-bill {
+    position: relative;
+}
+
+
+/* Recent Activity Section CSS  */
+.recent-activity-wrapper {
+    margin-top: 20px;
+}
+.heading-text.recent-activity-heading-text {
+        margin-bottom: 14px;
+}
+.recent-activity-card {
+    border-radius: 8px;
+    padding: 14px 14px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
+    margin-bottom: 10px;
+}
+.recent-activity-card-row{
+    display: flex;
+}
+.recent-activity-card-left-col{
+    width: calc(100% - 100px);
+}
+.recent-activity-card-right-col{
+        width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.status-button{
+border: 1px solid #048a304d;
+    background-color: #d4fde24d;
+    padding: 8px 14px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 9px;
+}
+.status-button-text{
+    color: #03732cb8;
+    line-height: 14px;
+}
+.recent-activity-inner-row{
+    display: flex;
+}
+.recent-activity-inner-left-col{
+        width: 50px;
+    height: 50px;
+}
+.icon-background-wrapper{
+        width: 100%;
+    height: 100%;
+    background-color: #DBEAFE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+.recent-activity-profile-image{
+        color: #3B82F6;
+    width: 30px;
+    height: 30px;
+}
+.recent-activity-inner-right-col{
+    padding-left:10px;
+}
+.recent-activity-card-heading{
+        color: #0f172b;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+}
+.recent-activity-card-time {
+        font-size: 14px;
+    margin-top: 2px;
+    color: #4B4949;
+}
+
+/* Upcoming Event Card CSS */
+.upcoming-events-wrapper {
+    height: 50%;
+}
+.upcoming-event-card {
+    display: flex;
+    border-radius: 8px;
+    padding: 14px 14px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
+    margin-bottom: 10px;
+}
+.upcoming-event-left-col {
+    width: 50px;
+    height: 50px;
+}
+.upcoming-event-right-col {
+padding-left: 10px;
+}
+.upcoming-events-heading-text {
+margin-bottom: 14px;
+}
+.upcoming-events-wrapper {
+        margin-top: 20px;   
+}
+.status-button.pending-status {
+    border-color: #c2801145;
+    background-color: #f59e0b24;
+}
+.status-button.pending-status .status-button-text{
+    color: #F59E0B;
+}

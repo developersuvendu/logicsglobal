@@ -1,0 +1,158 @@
+
+/* .list-view {
+  padding: 16px;
+} */
+
+.table-container {
+  background: #fff;
+  /* border-radius: 12px; */
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; 
+}
+
+
+.col-id       { width: 100px; }
+.col-title    { width: 320px; }   
+.col-assignee { width: 180px; }
+.col-status   { width: 140px; }
+.col-sprint   { width: 90px; }
+.col-date     { width: 110px; }
+
+
+th {
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: #6b7280;
+  background: #fafafa;
+  font-weight: 600;
+  border-bottom: 1px solid #f1f1f1;
+  white-space: nowrap;
+}
+
+td {
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #111827;
+  border-bottom: 1px solid #f1f1f1;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background: #fafafa;
+}
+
+td.muted {
+  color: #333;
+  font-size: 14px;
+}
+
+/* ── ID cell ── */
+.id-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.issue-id {
+  font-weight: 500;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ── Priority dot ── */
+.priority-dot {
+  width: 8px;
+  height: 8px;
+  min-width: 8px;   /* prevent shrinking in flex */
+  border-radius: 50%;
+}
+
+.priority-dot.high   { background: #dc2626; }
+.priority-dot.medium { background: #f59e0b; }
+.priority-dot.low    { background: #16a34a; }
+
+/* ── Title cell ── */
+.title-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0; /* CRITICAL: allows flex child to shrink & ellipsis to work */
+}
+
+.title-text {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  font-size: 14px;
+}
+
+/* ── Type icons ── */
+.icon {
+  flex-shrink: 0; /* never squish the icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon.story { color: #7c3aed; }
+.icon.task  { color: #2563eb; }
+.icon.bug   { color: #dc2626; }
+
+/* ── Assignee cell ── */
+.assignee-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.avatar {
+  width: 26px;
+  height: 26px;
+  min-width: 26px; /* prevent shrinking */
+  border-radius: 50%;
+  background: #6366f1;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.assignee-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Status badges ── */
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status.todo       { background: #f3f4f6; color: #374151; }
+.status.inprogress { background: #e0f2fe; color: #0369a1; }
+.status.done       { background: #dcfce7; color: #166534; }
+.status.readyfortesting      { background: #fef9c3; color: #854d0e; }

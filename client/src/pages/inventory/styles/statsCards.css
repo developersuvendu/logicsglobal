@@ -1,0 +1,89 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.stats-card {
+  background: white;
+  border-radius: 18px;
+  padding: 15px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.stats-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.stats-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon Background Colors */
+.stats-icon.blue {
+  background: #e8f0ff;
+  color: #2563eb;
+}
+
+.stats-icon.green {
+  background: #e7f8ee;
+  color: #16a34a;
+}
+
+.stats-icon.orange {
+  background: #fff4e6;
+  color: #ea580c;
+}
+
+.stats-icon.red {
+  background: #ffe8e8;
+  color: #dc2626;
+}
+.stats-icon.success{
+  display: none;
+}
+
+.stats-info h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  /* margin-bottom: 8px; */
+}
+
+.stats-info h2 {
+  font-size: 25px;
+  font-weight: 700;
+  color: #111827;
+  /* margin-bottom: 6px; */
+}
+
+.stats-info p {
+  font-size: 13px;
+  color: #16a34a;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

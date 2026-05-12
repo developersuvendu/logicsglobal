@@ -1,0 +1,118 @@
+.left-column{
+    width: 270px;
+}
+.right-column{
+width: calc(100% - 270px);
+}
+
+.header-wrapper {
+       padding: 6px 15px;
+    background-color: #fff;
+    border-bottom: 1px solid #e5e5e5;
+}
+.profile {
+    height: 34px;
+    border-radius: 100%;
+        border: 1.5px solid #fff;
+}
+.searchbar-wrapper {
+    width: 300px;
+    position: relative;
+    height: 35px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: var(--card-bg-color);
+    border: var(--card-border-width) solid var(--card-border-color);
+    box-shadow: var(--card-shadow);
+    color: #45556c;
+    background-color: #f1f5f9;
+    border-color: #e2e8f0;
+}
+.searchbar {
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 100%;
+    padding: 7px 40px 7px 15px; 
+    background-color: transparent;
+}
+.search-icon {
+    height: 16px;
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.notification {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: #314158;
+}
+.notification-wrapper {
+    position: relative;
+    margin-right: 30px;
+    position: relative;
+    top: 2px;
+}
+.notification-count {
+    position: absolute;
+    background-color: #f24568;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    font-size: 8px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -5px;
+    right: -5px;
+    cursor: pointer;
+    border: 2px solid #fff;
+}
+.profile-wrapper {
+background-color: var(--card-bg-color);
+    border: var(--card-border-width) solid var(--card-border-color);
+    box-shadow: var(--card-shadow);
+    padding: 4px 7px 4px 27px;
+    border-radius: 44px;
+    background-color: #f1f5f9;
+    border-color: #e2e8f0;
+
+
+        padding: 2px 2.5px 2px 27px;
+    border-radius: 44px;
+    background-color: #f1f5f9;
+    border-color: #e2e8f0;
+}
+.profile-info {
+    margin-right: 8px;
+}
+.user-name {
+    font-size: var(--small-notification-card-heading-font-size);
+    font-weight: 600;
+    color: #45556c;
+    /* display: none; */
+    font-size: 12px;
+}
+.user-role {
+font-size: var(--small-notification-card-text-font-size);
+    color: #989898;
+    /* margin-top: 1px; */
+    /* display: none; */
+    font-size: 11px;
+}
+.search-placeholder-text {
+position: absolute;
+    z-index: 9999999;
+    top: 0;
+    left: 0;
+    font-size: 13px;
+    pointer-events: none;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 35px;
+    color: #45556c;
+    opacity: 0.8;
+}

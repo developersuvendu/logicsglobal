@@ -1,0 +1,74 @@
+.inventory-page {
+  padding: 20px;
+  background: #f5f7fa;
+  height: calc(100% - 52px);
+  overflow: auto;
+  max-width: 1600px;
+margin: 0 auto;
+}
+
+/* Header */
+.inventory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.inventory-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.inventory-header p {
+  font-size: 15px;
+  color: #6b7280;
+}
+
+/* Header Actions */
+.inventory-header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+}
+
+.primary-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.primary-btn:hover {
+  background: #1d4ed8;
+}
+
+.secondary-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #111827;
+}
+
+.secondary-btn:hover {
+  background: #f9fafb;
+}
+
+/* Main Content */
+.inventory-content {
+  background: white;
+  border-radius: 20px;
+  min-height: 500px;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+}

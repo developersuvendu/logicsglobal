@@ -1,0 +1,153 @@
+.weekly-card {
+  margin-top: 22px;
+
+  background: #ffffff;
+
+  border-radius: 24px;
+  border: 1px solid #ececf2;
+
+  padding: 24px;
+}
+
+/* HEADER */
+
+.weekly-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.weekly-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.weekly-header p {
+  margin-top: 4px;
+
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.weekly-summary {
+  padding: 10px 16px;
+
+  border-radius: 14px;
+
+  background: #f5f7ff;
+
+  color: #5b5cf6;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* CHART */
+
+.weekly-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  height: 240px;
+}
+
+/* ITEM */
+
+.chart-item {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 12px;
+}
+
+/* HOURS */
+
+.chart-hours {
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #6b7280;
+}
+
+/* BAR */
+
+.chart-bar-wrapper {
+  width: 46px;
+  height: 150px;
+
+  border-radius: 18px;
+
+  background: #f3f4f8;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding: 6px;
+}
+
+.chart-bar {
+  width: 100%;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    180deg,
+    #7c6cff 0%,
+    #5b5cf6 100%
+  );
+
+  transition: 0.3s ease;
+}
+
+.chart-item.active .chart-bar {
+  background: linear-gradient(
+    180deg,
+    #4f46e5 0%,
+    #4338ca 100%
+  );
+
+  box-shadow:
+    0 12px 24px rgba(91, 92, 246, 0.25);
+}
+
+/* LABEL */
+
+.chart-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2px;
+}
+
+.chart-label span {
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #111827;
+}
+
+.chart-label small {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .weekly-chart {
+    overflow-x: auto;
+    gap: 20px;
+  }
+
+  .chart-item {
+    min-width: 70px;
+  }
+}

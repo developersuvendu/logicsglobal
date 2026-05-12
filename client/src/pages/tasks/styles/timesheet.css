@@ -1,0 +1,100 @@
+.timesheet-page {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Main Layout */
+.timesheet-content {
+  display: flex;
+  gap: 16px;
+  align-items: start;
+  width: 100%;
+}
+
+/* Left */
+.timesheet-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  width: 50%;
+}
+
+/* Right */
+.timesheet-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 16px;
+  width: 50%;
+}
+.time-sheet-taskmanagment-section{
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+/* Tablet */
+@media (max-width: 1200px) {
+  .timesheet-content {
+    grid-template-columns: 1fr;
+  }
+
+  .timesheet-right {
+    position: relative;
+    top: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .timesheet-page {
+    padding: 12px;
+  }
+}
+
+
+@media (max-width: 1400px) {
+  .timesheet-content {
+    grid-template-columns: 1fr 320px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .timesheet-content {
+    grid-template-columns: 1fr;
+  }
+
+  .timesheet-right {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .log-panel {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 992px) {
+  .timesheet-right {
+    grid-template-columns: 1fr;
+  }
+
+  .log-panel {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .timesheet-page {
+    padding: 16px;
+  }
+
+  .timesheet-content {
+    gap: 16px;
+  }
+}

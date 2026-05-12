@@ -1,0 +1,24 @@
+.table{
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 20px;
+    width: 100%;
+}
+.table-head {
+    height: 48px;
+    padding-left: 16px;
+    padding-right: 16px;
+    vertical-align: middle;
+    font-weight: 500;
+    color: #6b7280;
+    text-align: left;
+}
+.table-row {
+        border-bottom: 1px solid #e7eaee;
+}
+.table-cell {
+    vertical-align: middle;
+    padding: 16px;
+}

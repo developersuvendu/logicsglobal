@@ -1,0 +1,80 @@
+.attendance-heading {
+    font-size: 30px;
+    line-height: 30px;
+}
+.attendance-heading-wrapper {
+    height: 51px;
+}
+.attendance-content-wrapper {
+    width: 100%;
+    height: calc(100% - 5px);
+}
+.attendance_left_col {
+    width: 70%;
+    /* background-color: cyan; */
+}
+.attendance_right_col {
+        width: 30%;
+    /* background-color: blue; */
+}
+.attendance_card_wrapper {
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 2px solid #ffffff;
+    background-color: #f8fafc;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
+    min-width: 150px;
+    cursor: pointer;
+    /* height: 311px; */
+    margin-top: 15px;
+}
+.attendance_card {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.attendance_scanner {
+    height: 100%;
+    width: calc(100% - 342px);
+}
+.attendance_scanner img {
+    width: 100%;
+}
+.attendance_calender {
+    width: 310px;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+}
+.submit-button {
+    width: 100%;
+    color: #fff;
+    font-size: 15px;
+    padding: 9px 10px;
+    border: 0px;
+    border-radius: 6px;
+    background: linear-gradient(0deg, #170808, #737373);
+    background: linear-gradient(0deg, #403939 0%, #8f8d8d 100%);
+        font-weight: 500;
+}
+.verified-text {
+        color: #3B82F6;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    /* margin-top: 2px;
+    margin-bottom: 10px; */
+}
+.verification-check-icon {
+    width: 9px;
+    height: 9px;
+    margin-right: 4px;
+    color: #3b82f6;
+    position: relative;
+    top: 1.5px;
+}

@@ -1,0 +1,30 @@
+.my-hr-container {
+    padding: 24px 32px;
+}
+.my-hr-tabs-container {
+    margin-bottom: 24px;
+    border-bottom: 1px solid #e7eaee;
+}
+.my-hr-tab-link {
+        color: #6b7280;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    /* padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem; */
+
+    padding: 12px 20px;
+    border-bottom: 2px solid transparent;
+    /* border-color: transparent; */
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+
+}
+.my-hr-tab-link.active{
+    color: #e31c3a;
+    border-color: #e31c3a;
+}

@@ -1,0 +1,70 @@
+/* MAIN WRAPPER */
+.create-task {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* TYPE BUTTONS */
+.type-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.type-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: capitalize;
+  transition: 0.2s;
+  font-weight: 500;
+}
+
+.type-btn.active {
+  background: #377adb;
+  color: #fff;
+  border: none;
+}
+
+/* FORM */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+textarea {
+  min-height: 100px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  resize: none;
+}
+
+textarea:focus {
+  border-color: #377adb;
+  outline: none;
+}
+
+/* DATE */
+.date-row {
+  display: flex;
+  gap: 10px;
+}
+
+.date-row input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}

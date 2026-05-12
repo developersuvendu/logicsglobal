@@ -1,0 +1,208 @@
+/* Popup Container */
+.assets-filter-popup {
+  position: absolute;
+  top: 48px;
+  right: 0;
+
+  width: 520px;
+
+  background: white;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0 10px 40px rgba(15, 23, 42, 0.12);
+
+  z-index: 50;
+
+  animation: filterDropdown 0.18s ease;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animation */
+@keyframes filterDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.filter-popup-header {
+  padding: 18px 18px 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.filter-popup-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.filter-popup-header button {
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  background: #f9fafb;
+
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.filter-popup-header button:hover {
+  background: #f3f4f6;
+}
+
+/* Body */
+.filter-popup-body {
+  padding: 18px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* Full Width */
+.filter-group.full-width {
+  grid-column: span 2;
+}
+
+/* Group */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.filter-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Inputs */
+.filter-group input,
+.filter-select {
+  height: 44px;
+  width: 100%;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  padding: 0 14px;
+  background: white;
+
+  font-size: 14px;
+  color: #111827;
+
+  transition: 0.2s ease;
+}
+
+/* Focus */
+.filter-group input:focus,
+.filter-select:hover {
+  outline: none;
+  border-color: #2563eb;
+}
+
+/* Select */
+.filter-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+}
+
+/* Footer */
+.filter-popup-footer {
+  padding: 16px 18px;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  border-top: 1px solid #f3f4f6;
+}
+
+/* Buttons */
+.reset-btn {
+  height: 40px;
+  padding: 0 16px;
+
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+
+  background: white;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.reset-btn:hover {
+  background: #f9fafb;
+}
+
+/* Apply */
+.apply-btn {
+  height: 40px;
+  padding: 0 16px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.apply-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .assets-filter-popup {
+    width: 95vw;
+    right: -10px;
+  }
+
+  .filter-popup-body {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-group.full-width {
+    grid-column: span 1;
+  }
+}

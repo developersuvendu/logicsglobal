@@ -1,0 +1,144 @@
+.distribution-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #ececf2;
+  padding: 22px;
+  width: 40%;
+}
+
+/* HEADER */
+
+.distribution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 22px;
+}
+
+.distribution-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.distribution-header span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* CHART */
+
+.distribution-chart-wrapper {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 28px;
+}
+
+/* DONUT */
+
+.donut-chart {
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  background:
+    conic-gradient(
+      #5b5cf6 0% 48%,
+      #22c55e 48% 67%,
+      #f59e0b 67% 79%,
+      #ec4899 79% 89%,
+      #94a3b8 89% 100%
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+.donut-chart::after {
+  content: "";
+
+  position: absolute;
+
+  width: 126px;
+  height: 126px;
+
+  border-radius: 50%;
+
+  background: white;
+}
+
+.donut-inner {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+}
+
+.donut-inner h2 {
+  font-size: 32px;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.donut-inner p {
+  margin-top: 2px;
+
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* LEGEND */
+
+.distribution-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.legend-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.legend-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+}
+
+.legend-left h5 {
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #111827;
+}
+
+.legend-left p {
+  margin-top: 2px;
+
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.legend-percent {
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #6b7280;
+}
