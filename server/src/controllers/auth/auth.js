@@ -25,19 +25,13 @@ export const userLogin = async (req, res) => {
                 message: 'Invalid email or password',
             })
         }
-        // const isMatch= password === user.password;
-        // if(!isMatch){
-        //     return res.send({
-        //         status: 400,
-        //         message: 'Invalid Credentials',
-        //     })
-        // }
-        const isPasswordValid = await user.comparePassword(password);
-        if (!isPasswordValid) {
-          return res.send({
-            status: 400,
-            message: "Invalid email or password",
-          });
+
+        const isMatch= password === user.password;
+        if(!isMatch){
+            return res.send({
+                status: 400,
+                message: 'Invalid Credentials',
+            })
         }
 
         const { accessToken, refreshToken } = generateTokens(user);
@@ -71,9 +65,8 @@ export const userSignup = async (req, res) => {
             email: email,
             password: password,
         });
-        // await newUser.save();  
-        // const newUser = new Users({ name, email, password });
         await newUser.save();
+
         const { accessToken, refreshToken } = generateTokens(newUser);
         return res.send({
             status: 201,
