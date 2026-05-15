@@ -4,28 +4,32 @@ import fastify from 'fastify';
 import { PORT } from './src/config/config.js';
 import mongoose from 'mongoose';
 import { registerRoutes } from './src/routes/index.js';
-
+import cors from '@fastify/cors';
     
 const startServer = async () => {
-    try {   
-        await connectDB(process.env.MONGO_URI);
-        const app= fastify();
-        registerRoutes(app);
+    try {
+      await connectDB(process.env.MONGO_URI);
+      const app = fastify();
+      await app.register(cors, {
+        origin: true,
+        credentials: true,
+      });
 
-        app.get('/', async (request, reply) => {
-            return { message: 'Hello, World!' };
-        });
+      registerRoutes(app);
 
-        await app.listen({ port: PORT, host: '0.0.0.0' },(err, address) => {
-            if (err) {
-                console.error('Error Occur on starting of server', err);
-            }
-            console.log(`Server is running on http://localhost:${PORT}`);
-        });
-    }
-    catch (error) {
-        console.error('Error starting server:', error);
-        process.exit(1);
+      app.get("/", async (request, reply) => {
+        return { message: "Hello, World!" };
+      });
+
+      await app.listen({ port: PORT, host: "0.0.0.0" }, (err, address) => {
+        if (err) {
+          console.error("Error Occur on starting of server", err);
+        }
+        console.log(`Server is running on http://localhost:${PORT}`);
+      });
+    } catch (error) {
+      console.error("Error starting server:", error);
+      process.exit(1);
     }
 }
 
