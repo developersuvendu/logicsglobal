@@ -8,13 +8,13 @@ import Calendar from '../../components/common/Calendar';
 import { CircleCheck, Circle } from 'lucide-react';
 const Attendance = () => {
   return (
-    <div className="container height-100">
+    <div className="container height-full">
       <div className="attendance-heading-wrapper">
         <h1 className="heading-text attendance-heading">Attendance</h1>
         <p>Face ID · Geo-verified</p>
       </div>
       <div className='attendance-content-wrapper'>
-        <div className="flex height-100 width-100">
+        <div className="flex height-full width-full">
           <div className="attendance_left_col">
             <div className="attendance_card_wrapper">
                 <div className="attendance_card">

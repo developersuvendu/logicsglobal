@@ -77,7 +77,7 @@ function App() {
 
 
   return (
-    // <div className="flex App height-100">
+    // <div className="flex App height-full">
     //   <div className={`left-col ${collapsed ? 'collapsed' : ''}`}>
     //     <div className='sidebar__toggle'  onClick={() => setCollapsed(prev => !prev)} aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}>
     //       {collapsed ? <ChevronRight /> : <ChevronLeft />}

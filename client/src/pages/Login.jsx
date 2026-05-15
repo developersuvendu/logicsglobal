@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from "react";
 import { Link } from 'react-router-dom'
 import '../styles/Login.css';
 import BannerImage from '../assets/login-banner-image.png';
@@ -8,7 +8,27 @@ import BottomRightTriangle from '../assets/bottom-right-triangle-3d.png';
 import GoogleLogo from '../assets/google-logo.png';
 
 
+
 const Login = () => {
+  
+  const handleLogin=(e)=>{
+    e.preventDefault();
+    console.log("Login Button Clicked");
+    console.log("Form Data :",formData);
+  }
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div className="login-wrapper">
 
@@ -21,13 +41,13 @@ const Login = () => {
           <section className='login-section'>
             <div className="home-row">
               <div className="home-left-column">
-                <div className="login-div">
+                <form className="login-div" onSubmit={handleLogin}>
                   <h1 className="welcome-large-text">Welcome Back</h1>
                   <p className="login-small-text">Enter your Sign in credentials and get started</p>
                   <div className="login-form">
-                    <input type="text" id="email" className="login-textbox email-textbox" placeholder="Enter your email" />
+                    <input type="text" id="email" className="login-textbox email-textbox" placeholder="Enter your email" onChange={handleChange} />
                     <div className="password-input-div">
-                      <input type="password" id="password" className="login-textbox password-textbox" placeholder="Enter your password" />
+                      <input type="password" id="password" className="login-textbox password-textbox" placeholder="Enter your password" onChange={handleChange}/>
                     </div>
                     <input type="checkbox" className="remember-me-checkbox" />
                     <label className="remember-me-text">Remember me</label>
@@ -37,7 +57,7 @@ const Login = () => {
                     <p className="login-small-text dont-have-account-text">Don’t have an account?<Link to="/signup" className="sign-up-text">Sign up</Link></p>
                     <p className="validation-message-text">Email or password is incorrect, please try again!</p>
                   </div>
-                </div>
+                </form>
               </div>
               <div className="home-right-column">
                 <img src={BannerImage} alt="Home Banner Image" className="home-banner-image" />

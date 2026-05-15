@@ -6,7 +6,7 @@ import "../../styles/Header.css";
 import { Bell, ChevronDown } from 'lucide-react';
 const Header = () => {
   return (
-    <div className="flex justify-space-between align-center header-wrapper">
+    <div className="flex justify-between align-center header-wrapper">
       <div className="searchbar-wrapper">
         <svg
           xmlns="http://www.w3.org/2000/svg"
