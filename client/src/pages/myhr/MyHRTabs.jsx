@@ -6,6 +6,7 @@ const tabs = [
   { label: "Documents", to: "/myhr/documents" },
   { label: "Onboarding", to: "/myhr/onboarding" },
   { label: "Flight Tickets", to: "/myhr/flight-tickets" },
+  { label: "Holiday List", to: "/myhr/holidays" },
 ];
 
 const MyHRTabs = () => {
