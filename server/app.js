@@ -1,32 +1,48 @@
-import 'dotenv/config';
-import { connectDB } from './src/config/connect.js';
-import fastify from 'fastify';
-import { PORT } from './src/config/config.js';
-import mongoose from 'mongoose';
-import { registerRoutes } from './src/routes/index.js';
+import "dotenv/config";
 
-    
+import fastify from "fastify";
+
+import cors from "@fastify/cors";
+
+import { connectDB } from "./src/config/connect.js";
+
+import { PORT } from "./src/config/config.js";
+
+import { registerRoutes } from "./src/routes/index.js";
+
+const app = fastify();
+
 const startServer = async () => {
-    try {   
-        await connectDB(process.env.MONGO_URI);
-        const app= fastify();
-        registerRoutes(app);
+  try {
+    await connectDB(process.env.MONGO_URI);
 
-        app.get('/', async (request, reply) => {
-            return { message: 'Hello, World!' };
-        });
+    await app.register(cors, {
+      origin: ["http://localhost:5173"],
 
-        await app.listen({ port: PORT, host: '0.0.0.0' },(err, address) => {
-            if (err) {
-                console.error('Error Occur on starting of server', err);
-            }
-            console.log(`Server is running on http://localhost:${PORT}`);
-        });
-    }
-    catch (error) {
-        console.error('Error starting server:', error);
-        process.exit(1);
-    }
-}
+      methods: ["GET", "POST", "PUT", "DELETE"],
+
+      credentials: true,
+    });
+
+    registerRoutes(app);
+
+    app.get("/", async () => {
+      return {
+        message: "Hello World",
+      };
+    });
+
+    await app.listen({
+      port: PORT || 5000,
+      host: "0.0.0.0",
+    });
+
+    console.log(`Server running on http://localhost:${PORT}`);
+  } catch (error) {
+    console.error(error);
+
+    process.exit(1);
+  }
+};
 
 startServer();

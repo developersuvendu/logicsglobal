@@ -122,3 +122,6 @@ stroke-width: 1.6px;
     width: 19px;
 stroke-width: 1.6px;
 } */
+.nav-item.logout-button{
+    cursor: pointer;
+}

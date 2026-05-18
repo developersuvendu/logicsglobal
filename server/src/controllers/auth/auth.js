@@ -1,176 +1,135 @@
-import Users from '../../models/user.js';
-import jwt from 'jsonwebtoken';
+import Users from "../../models/user.js";
+
+import jwt from "jsonwebtoken";
 
 const generateTokens = (user) => {
-    const accessToken = jwt.sign(
-      { userId: user._id, role: user.role },
-      process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "15m" },
-    );
-    const refreshToken = jwt.sign(
-      { userId: user._id, role: user.role },
-      process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "7d" }
-    );
-    return { accessToken, refreshToken };
-}
+  const accessToken = jwt.sign(
+    {
+      userId: user._id,
+      role: user.role,
+    },
+    process.env.ACCESS_TOKEN_SECRET,
+    {
+      expiresIn: "15m",
+    },
+  );
 
-export const userLogin = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-        const user = await Users.findOne({ email });
-        if (!user) {
-            return res.send({
-                status: 401,
-                message: 'Invalid email or password',
-            })
-        }
+  const refreshToken = jwt.sign(
+    {
+      userId: user._id,
+      role: user.role,
+    },
+    process.env.REFRESH_TOKEN_SECRET,
+    {
+      expiresIn: "7d",
+    },
+  );
 
-        const isMatch= password === user.password;
-        if(!isMatch){
-            return res.send({
-                status: 400,
-                message: 'Invalid Credentials',
-            })
-        }
+  return {
+    accessToken,
+    refreshToken,
+  };
+};
 
-        const { accessToken, refreshToken } = generateTokens(user);
-        return res.send({
-            status: 200,
-            message: "Login successful",
-            accessToken,
-            refreshToken,
-            user,
-        });
-    } catch (error) {
-        return res.send({
-            status: 500,
-            message: 'Internal Server Error',
-        });
-    }
-}
+export const userLogin = async (request, reply) => {
+  try {
+    const { email, password } = request.body;
 
-export const userSignup = async (req, res) => {
-    try {
-        const { name, email, password } = req.body;
-        const existingUser = await Users.findOne({ email });
-        if (existingUser) {
-            return res.send({
-                status: 400,
-                message: 'Email already in use',
-            });
-        }     
-        const newUser = new Users({
-            name: name,
-            email: email,
-            password: password,
-        });
-        await newUser.save();
+    const user = await Users.findOne({ email });
 
-        const { accessToken, refreshToken } = generateTokens(newUser);
-        return res.send({
-            status: 201,
-            message: 'Account created successfully',
-            accessToken,
-            refreshToken,
-            user: newUser
-        });
-    } catch (error) {
-        return res.send({
-            status: 500,
-            message: 'Internal Server Error'
-        });                                                                                                                                                                                                                                                                                                                                                                                                                                    
-    }       
-}
-
-export const refreshToken = async (req, res) => {
-    const { token } = req.body;
-    if (!token) {
-        return res.send({
-            status: 400,    
-            message: 'Refresh token is required'
-        });
+    if (!user) {
+      return reply.code(401).send({
+        message: "Invalid email or password",
+      });
     }
 
+    const isMatch = password === user.password;
 
-
-    try {
-        const decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
-        let user;
-        if (decoded.role === 'admin') {
-            user = await Users.findById(decoded.userId);
-        } else if (decoded.role === 'user') {
-            user = await Users.findById(decoded.userId);
-        } else if (decoded.role === 'manager') {
-            user = await Users.findById(decoded.userId);
-        } else if (decoded.role === 'systemadmin') {
-            user = await Users.findById(decoded.userId);
-        } else {
-            return res.send({
-                status: 403,
-                message: 'Invalid user role'
-            });
-        }
-        if (!user) {
-            return res.send({
-                status: 403,
-                message: 'User Not Found'
-            });
-        }
-
-        const { accessToken, refreshToken } = generateTokens(user);
-        return res.send({
-            status: 200,
-            message: 'Access token refreshed successfully',
-            accessToken,
-            refreshToken
-        });
-
-
-    } catch (error) {
-        return res.send({
-            status: 403,
-            message: 'Invalid Refresh Token'
-        });
+    if (!isMatch) {
+      return reply.code(401).send({
+        message: "Invalid email or password",
+      });
     }
-}
 
-export const fetchUser= async (req, res) => {
-    try {
-        const {userId, role} = req.user;
-            let user;
-        if (role === 'admin') {
-            user = await Users.findById(userId);
-        } else if (role === 'user') {
-            user = await Users.findById(userId);
-        } else if (role === 'manager') {
-            user = await Users.findById(userId);
-        } else if (role === 'systemadmin') {
-            user = await Users.findById(userId);
-        } else {
-            return res.send({
-                status: 403,
-                message: 'Invalid user role'
-            });
-        }
+    const { accessToken, refreshToken } = generateTokens(user);
 
-        if (!user) {
-            return res.send({
-                status: 404,
-                message: 'User not found'
-            });
-        }
-        return res.send({
-            status: 200,
-            message: 'User fetched successfully',
-            user
-        });
+    return reply.code(200).send({
+      message: "Login successful",
 
-    } catch (error) {
-        return res.send({
-            status: 500,
-            message: 'Internal Server Error'
-        });
+      accessToken,
+
+      refreshToken,
+
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        isActive: user.isActive,
+        createdAt: user.createdAt,
+      },
+    });
+  } catch (error) {
+    console.error("Login Error:", error);
+
+    return reply.code(500).send({
+      message: "Internal Server Error",
+    });
+  }
+};
+
+export const userSignup = async (request, reply) => {
+  try {
+    const { name, email, password } = request.body;
+
+    const existingUser = await Users.findOne({ email });
+
+    if (existingUser) {
+      return reply.code(400).send({
+        message: "Email already in use",
+      });
     }
-}
 
+    const newUser = new Users({
+      name,
+      email,
+      password,
+    });
+
+    await newUser.save();
+
+    return reply.code(201).send({
+      message: "Account created successfully",
+    });
+  } catch (error) {
+    console.error("Signup Error:", error);
+
+    return reply.code(500).send({
+      message: "Internal Server Error",
+    });
+  }
+};
+
+export const refreshToken = async (request, reply) => {
+  try {
+    return reply.code(200).send({
+      message: "Refresh token endpoint",
+    });
+  } catch (error) {
+    return reply.code(500).send({
+      message: "Internal Server Error",
+    });
+  }
+};
+
+export const fetchUser = async (request, reply) => {
+  try {
+    return reply.code(200).send({
+      message: "Fetch user endpoint",
+    });
+  } catch (error) {
+    return reply.code(500).send({
+      message: "Internal Server Error",
+    });
+  }
+};
