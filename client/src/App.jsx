@@ -34,7 +34,7 @@ import Documents from './pages/myhr/Documents';
 import Onboarding from './pages/myhr/Onboarding';
 import FlightTickets from './pages/myhr/FlightTickets';
 import MyHRLayout from './pages/myhr/MyHRLayout';
-
+import Holidays from './pages/myhr/Holidays';
 
 
 
@@ -140,6 +140,7 @@ function App() {
                 <Route path="documents" element={<Documents />} />
                 <Route path="onboarding" element={<Onboarding />} />
                 <Route path="flight-tickets" element={<FlightTickets />} />
+                <Route path="holidays" element={<Holidays />} />
               </Route>
             <Route path="/attendance" element={<Attendance />} />
             <Route path="/inventory" element={<Inventory />} />

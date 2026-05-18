@@ -14,6 +14,7 @@ import ProfileOverview from '../assets/profile_image.webp';
 import reimbursement from '../assets/reimbursement.png';
 import RecentFlight from '../assets/recent-flight.svg';
 import BannerIllustration from '../assets/human.svg';
+import RedBannerIllustration from '../assets/human-red.svg';
 
 import { Star,ArrowUp, X, CalendarDays, Video,Cake } from 'lucide-react';
 import Calender25 from '../assets/calender-25.svg';
@@ -21,6 +22,7 @@ import Computer from '../assets/computer.svg';
 import Wifi from '../assets/wifi.svg';
 import Gym from '../assets/gym.svg';
 import Flight from '../assets/flight.svg';
+import { LeaveCard } from '../components/LeaveCards/LeaveCard';
 
 export default class Dashboard extends React.Component {
   render() {
@@ -38,14 +40,15 @@ export default class Dashboard extends React.Component {
                 documents—seamlessly from a single dashboard.
               </p>
               <img 
-                src={BannerIllustration}
+                src={RedBannerIllustration}
                 alt="Banner Illustration"
                 className="banner-illustration"
               />
             </div>
           </div>
+          <LeaveCard/>
           <div className="leave-card-wrapper">
-            <div className="leave-card">
+            {/* <div className="leave-card">
               <h1 className="leave-card-heading">Sick Leave</h1>
               <p className="leave-card-text">2/6</p>
             </div>
@@ -60,7 +63,7 @@ export default class Dashboard extends React.Component {
             <div className="leave-card">
               <h1 className="leave-card-heading">Work From Home</h1>
               <p className="leave-card-text">2/6</p>
-            </div>
+            </div> */}
           </div>
           {/* Todo's Section */}
           <div className="todo-wrapper">
@@ -238,49 +241,24 @@ export default class Dashboard extends React.Component {
         </div>
         <div className="profile-overview-wrapper">
           <div className="profile-overview">
-            <h2 className="heading-text">Performance Overview</h2>
-            {/* <div className="progress-ring" id="ring">
-              <img src={ProfileOverview} alt="ProfileOverview Image" className="profile-overview-image"/>
-            </div>
-            
-            <div className="rating-wrapper">
-              <span className="rating-text">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EFB010"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EFB010"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EFB010"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EFB010"><path d="m606-286-33-144 111-96-146-13-58-136v312l126 77ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="24px"
-                  viewBox="0 -960 960 960"
-                  width="24px"
-                  fill="#EFB010"
-                >
-                  <path d="m354-287 126-76 126 77-33-144 111-96-146-13-58-136-58 135-146 13 111 97-33 143ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-350Z" />
-                </svg>
-                
-              </span>
-            </div>
+            {/* <h2 className="heading-text quick-link-heading-text">Profile Overview</h2> */}
+              <div className="profile-header">
 
-            <div className="performance-card-wrapper">
-              <div className="performance-card">
-                <div className="performance-card-">
-                  <div className="performance-card-left-col">
-                    <h3 className="performance-card-heading">Work</h3>
-                    <p className="performance-rating-text">Meets Expetation</p>
-                  </div>
-                  <div className="performance-card-right-col">
-                    <h1 className="performance-in-percentage">81%</h1>
-                    <div className="performace-indication-wrapper">
-                      <ArrowUp className="performace-indication"/>
-                    </div>
-                  </div>
-                </div>
               </div>
-            </div> */}
+              <div className="profile-image-wrapper">
+<img src={ProfileOverview} alt="" />
+              </div>
+              <div className='flex align-center' style={{"display":"flex","marginBottom":"3px"}}>
+                <div><h2 className="heading-text quick-link-heading-text" style={{"marginBottom":"0px"}}>Suvendu Mohanta</h2></div>
+                <div><p className="designation-text">Active</p></div>
+              </div>
+              <div>
+                <p className='text-muted-foreground'>HR Manager</p>
+                <p className='text-muted-foreground'>+91 9078322645</p>
+              </div>
           </div>
           <div className="upcoming-events-wrapper">
-            <h2 className="heading-text upcoming-events-heading-text">Upcoming Events</h2>
+            <h2 className="heading-text upcoming-events-heading-text quick-link-heading-text">Upcoming Events</h2>
             <div className="upcoming-event-card-wrapper">
               <div className="upcoming-event-card">
                 <div className="upcoming-event-left-col">

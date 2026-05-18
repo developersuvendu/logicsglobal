@@ -31,6 +31,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../components/common/Select.jsx";
+
+
+
+import { LeaveCard } from '../../components/LeaveCards/LeaveCard.jsx';
+
+
 const baseChart = {
   credits: { enabled: false },
   title: {
