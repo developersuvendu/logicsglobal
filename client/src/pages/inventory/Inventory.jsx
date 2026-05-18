@@ -40,8 +40,6 @@ const Inventory = () => {
         </div>
       </div>
 
-      <StatsCards />
-
       <div className="inventory-content">
         <AssetTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         <div className="inventory-main-grid">

@@ -23,7 +23,7 @@ import Documents from "./pages/myhr/Documents";
 import Onboarding from "./pages/myhr/Onboarding";
 import FlightTickets from "./pages/myhr/FlightTickets";
 import ProtectedRoute from "./components/common/ProtectedRoute";
-
+import Holidays from './pages/myhr/Holidays';
 function App() {
   return (
     <BrowserRouter>
