@@ -49,10 +49,10 @@ const Inventory = () => {
               onView={(asset) => setSelectedAsset(asset)}
             />
           </div>
-          <div className="inventory-main-right-section">
+          {/* <div className="inventory-main-right-section">
             <QuickActions />
             <AlertsPanel />
-          </div>
+          </div> */}
         </div>
         <RecentRequests />
       </div>

@@ -16,3 +16,143 @@ padding: 24px;
     font-size: 20px;
     font-weight: 700;
 }
+.onboarding-card-heading-text {
+font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+}
+.onboarding-card-muted-text {
+    font-size: 16px;
+    margin-top: 4px;
+    line-height: 24px;
+}
+.onboarding-card-left-col {
+
+}
+.onboarding-card-left-col {
+
+}
+.onboarding-card-row {
+    gap: 16px;
+    align-items: flex-start;
+}
+.onboarding-card-wrapper {
+        box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 #0000000d;
+            padding: 24px;
+    color: #151b28;
+    background-image: linear-gradient(to bottom right, #feecee, #feecee00);
+    border: 1px solid #e31c3a1a;
+    border-radius: 12px;
+}
+.onboard-percentage-text {
+color: #e31c3a;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+}
+.onboard-step-text {
+    color: #6b7280;
+    font-size: 12px;
+    line-height: 16px;
+}
+.progress-bar {
+border-radius: 9999px;
+    overflow: hidden;
+    width: 100%;
+    height: 8px;
+    margin-top: 16px;
+    position: relative;
+    background-color: #edeff2;
+}
+.progress {
+background-color: #e31c3a;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+}
+.onboarding-track-wrapper {
+        box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 #0000000d;
+    color: #151b28;
+    background-color: white;
+    border: 1px solid #e7eaee;
+    border-radius: 12px;
+    margin-top: 24px;
+}
+.onboarding-header-wrapper {
+        padding: 20px;
+    border-bottom: 1px solid #e7eaee;
+}
+.onboarding-track-div {
+    padding: 24px;
+}
+.onboard-completed-status,.onboard-inprogress-status {
+position: relative;
+    z-index: 10;
+    display: flex;
+    height: 3.5rem;
+    width: 3.5rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border-width: 2px;
+    border-color: #29a36a;
+    background-color: #ebfaf3;
+    color: #29a36a;
+    border: 2px solid #29a36a;
+    display: flex;
+}
+.onboard-inprogress-status {
+    color: #f59f0a;
+    background-color: #fef5e7;
+    border-color: #f59f0a;
+}
+.onboard-completed-status svg,
+.onboard-inprogress-status svg {
+    width: 20px;
+    height: 20px;
+}
+/* .onboard-inprogress-status {
+
+} */
+.track-steps {
+    margin-top: 20px;
+    gap: 16px;
+}
+.track-steps-text {
+    margin-top: 2px;
+    line-height: 20px;
+}
+/* .track-steps-text {
+        line-height: 24px;
+} */
+.track-steps-small-text {
+    margin-top: 4px;
+}
+.track-line-border {
+background-color: #e7eaee;
+    width: 1px;
+    top: 8px;
+    left: 27px;
+    bottom: 8px;
+    position: absolute;
+}
+.onboarding-status {
+        color: #29a36a;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    background-color: #ebfaf3;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+}
+.onboarding-status svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+}
