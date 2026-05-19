@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 
-const leaveSchema = new mongoose.Schema({
+const documentSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "Users", required: true },
+    documentType: { type: String, enum: ["pending", "approved", "rejected"], default: "pending" },
+    
     leaveType: { type: String, required: true },
     startDate: { type: String, required: true },
     endDate: { type: String, required: true },
@@ -13,6 +15,6 @@ const leaveSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const Leave = mongoose.model("Leave", leaveSchema);
+const Document = mongoose.model("Document", documentSchema);
 
-export default Leave;
+export default Document;

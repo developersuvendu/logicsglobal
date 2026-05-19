@@ -1,19 +1,9 @@
-import {
-    applyLeave,
-    updateLeave,
-    deleteLeave
-} from "../controllers/leave/leave.js";
+import { getLeaves, applyLeave, updateLeave, deleteLeave } from "../controllers/leave/leave.js";
 
-export const inventoryRoutes = (fastify,options) => {
-    fastify.post('/inventory', getInventories);
-    fastify.post('/add-inventory', addInventory);
-    fastify.put("/inventory/:id", updateInventory);
-    fastify.delete("/inventory/:id", deleteInventory);
+export const leaveRoutes = (fastify,options) => {
+    fastify.post('/leave/get', getLeaves);
+    fastify.post('/leave/apply', applyLeave);
+    fastify.put("/leave/update/:id", updateLeave);
+    fastify.delete("/leave/delete/:id", deleteLeave);
 }
 
-
-// router.post("/apply", applyLeave);
-
-// router.put("/update/:id", updateLeave);
-
-// router.delete("/delete/:id", deleteLeave);
