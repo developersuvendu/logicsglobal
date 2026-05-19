@@ -105,7 +105,6 @@ font-size: var(--small-notification-card-text-font-size);
 }
 .search-placeholder-text {
 position: absolute;
-    z-index: 9999999;
     top: 0;
     left: 0;
     font-size: 13px;

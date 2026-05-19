@@ -179,3 +179,50 @@
   background: #d1d5db;
   border-radius: 20px;
 }
+/* =========================================
+   PREMIUM ASSET ICONS
+========================================= */
+
+.asset-icon-box {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 16px;
+
+  background: linear-gradient(
+    135deg,
+    #eff6ff,
+    #dbeafe
+  );
+
+  border: 1px solid #dbeafe;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #2563eb;
+
+  flex-shrink: 0;
+}
+
+/* Better premium spacing */
+.asset-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Premium hover */
+.asset-table tbody tr:hover .asset-icon-box {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 18px rgba(37, 99, 235, 0.12);
+
+  transition: 0.2s ease;
+}
+.status-badge.requested {
+  background: #fff7ed;
+  color: #ea580c;
+}

@@ -1,50 +1,13 @@
-import { Eye, MoreVertical } from "lucide-react";
+import {
+  Eye,
+  MoreVertical,
+  Laptop,
+  Monitor,
+  Smartphone,
+  Headphones,
+} from "lucide-react";
 
 import "../styles/assetTable.css";
-import { inventoryAssets } from "../inventoryData";
-
-// const assets = [
-//   {
-//     id: "AST-2024-001",
-//     name: "MacBook Pro M2",
-//     employee: "Suvendu Mohanta",
-//     role: "UI/UX Developer",
-//     category: "Laptop",
-//     assignedDate: "12 May 2024",
-//     status: "Assigned",
-//     image: "https://images.unsplash.com/photo-1517336714739-489689fd1ca8?w=100",
-//   },
-//   {
-//     id: "AST-2024-002",
-//     name: "Dell UltraSharp 24",
-//     employee: "Rakesh Rout",
-//     role: "Frontend Developer",
-//     category: "Monitor",
-//     assignedDate: "10 May 2024",
-//     status: "Assigned",
-//     image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=100",
-//   },
-//   {
-//     id: "AST-2024-003",
-//     name: "iPhone 15 Pro",
-//     employee: "Pooja Nayak",
-//     role: "HR Executive",
-//     category: "Mobile",
-//     assignedDate: "18 May 2024",
-//     status: "Available",
-//     image: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=100",
-//   },
-//   {
-//     id: "AST-2024-004",
-//     name: "Sony WH-1000XM5",
-//     employee: "Amit Kumar",
-//     role: "Project Manager",
-//     category: "Accessories",
-//     assignedDate: "05 May 2024",
-//     status: "In Repair",
-//     image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=100",
-//   },
-// ];
 
 const getStatusClass = (status) => {
   switch (status) {
@@ -56,34 +19,56 @@ const getStatusClass = (status) => {
 
     case "In Repair":
       return "repair";
+    case "Requested":
+      return "requested";
 
     default:
       return "";
   }
 };
 
-const AssetTable = ({ activeTab, onView }) => {
+const getAssetIcon = (category) => {
+  switch (category) {
+    case "Laptop":
+      return <Laptop size={28} />;
+
+    case "Monitor":
+      return <Monitor size={28} />;
+
+    case "Mobile":
+      return <Smartphone size={28} />;
+
+    case "Accessories":
+      return <Headphones size={28} />;
+
+    default:
+      return <Laptop size={28} />;
+  }
+};
+
+const AssetTable = ({
+  assets = [],
+  // onView,
+  activeTab,
+  isEmployeeView = false,
+}) => {
   const filteredAssets =
     activeTab === "All Assets"
-      ? inventoryAssets
-      : inventoryAssets.filter((asset) => {
-          switch (activeTab) {
-            case "Assigned Assets":
-              return asset.status === "Assigned";
+      ? assets
+      : assets.filter((asset) => {
+          if (activeTab === "Assigned Assets")
+            return asset.status === "Assigned";
 
-            case "Available Assets":
-              return asset.status === "Available";
+          if (activeTab === "Available Assets")
+            return asset.status === "Available";
 
-            case "In Repair":
-              return asset.status === "In Repair";
+          if (activeTab === "In Repair") return asset.status === "In Repair";
 
-            case "Lost Assets":
-              return asset.status === "Lost";
+          if (activeTab === "Lost Assets") return asset.status === "Lost";
 
-            default:
-              return true;
-          }
+          return true;
         });
+
   return (
     <div className="asset-table-card">
       <div className="table-header">
@@ -95,11 +80,16 @@ const AssetTable = ({ activeTab, onView }) => {
           <thead>
             <tr>
               <th>Asset</th>
-              <th>Employee</th>
+              <th>Model</th>
+
+              {!isEmployeeView && <th>Employee</th>}
+
               <th>Category</th>
               <th>Assigned Date</th>
+
               {activeTab === "All Assets" && <th>Status</th>}
-              <th>Actions</th>
+
+              {/* <th>Actions</th> */}
             </tr>
           </thead>
 
@@ -109,28 +99,32 @@ const AssetTable = ({ activeTab, onView }) => {
                 {/* Asset */}
                 <td>
                   <div className="asset-info">
-                    <img src={asset.image} alt={asset.name} />
+                    <div className="asset-icon-box">
+                      {getAssetIcon(asset.category)}
+                    </div>
 
                     <div>
                       <h4>{asset.name}</h4>
-                      <p>{asset.id}</p>
+                      <p>{asset.assetId}</p>
                     </div>
                   </div>
                 </td>
+               <td>{asset.model || "-"}</td>
+         
+                {!isEmployeeView && (
+                  <td>
+                    <div className="employee-info">
+                      <div className="employee-avatar">
+                        {asset.employee.charAt(0)}
+                      </div>
 
-                {/* Employee */}
-                <td>
-                  <div className="employee-info">
-                    <div className="employee-avatar">
-                      {asset.employee.charAt(0)}
+                      <div>
+                        <h4>{asset.employee}</h4>
+                        <p>{asset.role}</p>
+                      </div>
                     </div>
-
-                    <div>
-                      <h4>{asset.employee}</h4>
-                      <p>{asset.role}</p>
-                    </div>
-                  </div>
-                </td>
+                  </td>
+                )}
 
                 <td>{asset.category}</td>
 
@@ -148,17 +142,21 @@ const AssetTable = ({ activeTab, onView }) => {
                 )}
 
                 {/* Actions */}
-                <td>
+                {/* <td>
                   <div className="table-actions">
-                    <button onClick={() => onView(asset)}>
+                    <button
+                      onClick={() => onView(asset)}
+                    >
                       <Eye size={18} />
                     </button>
 
-                    <button>
-                      <MoreVertical size={18} />
-                    </button>
+                    {!isEmployeeView && (
+                      <button>
+                        <MoreVertical size={18} />
+                      </button>
+                    )}
                   </div>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

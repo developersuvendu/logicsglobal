@@ -9,6 +9,9 @@ import Signup from "./pages/Signup";
 // Layout
 import Layout from "./components/Layout/Layout";
 
+// Protected Route
+import ProtectedRoute from "./components/common/ProtectedRoute";
+
 // Main Pages
 import Dashboard from "./pages/Dashboard";
 import Attendance from "./pages/attendance/Attendance";
@@ -22,12 +25,16 @@ import Leave from "./pages/myhr/Leave";
 import Documents from "./pages/myhr/Documents";
 import Onboarding from "./pages/myhr/Onboarding";
 import FlightTickets from "./pages/myhr/FlightTickets";
-import ProtectedRoute from "./components/common/ProtectedRoute";
-import Holidays from './pages/myhr/Holidays';
+import Holidays from "./pages/myhr/Holidays";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Default Redirect */}
+
+        <Route path="/" element={<Navigate to="/login" replace />} />
+
         {/* Public Routes */}
 
         <Route path="/login" element={<Login />} />
@@ -38,6 +45,7 @@ function App() {
 
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Layout />}>
+
             <Route path="dashboard" element={<Dashboard />} />
 
             <Route path="myhr" element={<MyHRLayout />}>
@@ -50,7 +58,11 @@ function App() {
               <Route path="onboarding" element={<Onboarding />} />
 
               <Route path="flight-tickets" element={<FlightTickets />} />
+
+              <Route path="holidays" element={<Holidays />} />
             </Route>
+
+            {/* Other Modules */}
 
             <Route path="attendance" element={<Attendance />} />
 
@@ -61,10 +73,6 @@ function App() {
             <Route path="task" element={<Tasks />} />
           </Route>
         </Route>
-
-        {/* Default Route */}
-
-        <Route path="/" element={<Navigate to="/login" replace />} />
 
         {/* Invalid Routes */}
 

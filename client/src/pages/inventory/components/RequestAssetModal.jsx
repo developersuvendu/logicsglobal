@@ -1,29 +1,77 @@
-import { Laptop, Monitor, Headphones, Smartphone } from "lucide-react";
+import { useState } from "react";
+
+import { X } from "lucide-react";
 
 import Modal from "../../../components/common/Modal";
+import Dropdown from "../../../components/common/Dropdown";
 
 import "../styles/requestAssetModal.css";
 
-const assetOptions = [
-  {
-    title: "Laptop",
-    icon: <Laptop size={20} />,
-  },
-  {
-    title: "Monitor",
-    icon: <Monitor size={20} />,
-  },
-  {
-    title: "Accessories",
-    icon: <Headphones size={20} />,
-  },
-  {
-    title: "Mobile",
-    icon: <Smartphone size={20} />,
-  },
+import { requestAssetApi } from "../../../api/inventoryApi";
+
+import { getUser } from "../../../utils/storage";
+
+const categoryOptions = [
+  { label: "Laptop", value: "laptop" },
+  { label: "Monitor", value: "monitor" },
+  { label: "Keyboard", value: "keyboard" },
+  { label: "Mouse", value: "mouse" },
+  { label: "Headset", value: "headset" },
+  { label: "Webcam", value: "webcam" },
+  { label: "Mouse Pad", value: "mousepad" },
+  { label: "Laptop Stand", value: "laptopstand" },
+  { label: "Docking Station", value: "dock" },
+  { label: "Mobile", value: "mobile" },
+  { label: "Tablet", value: "tablet" },
+  { label: "Charger", value: "charger" },
 ];
 
-const RequestAssetModal = ({ isOpen, onClose }) => {
+// const priorityOptions = [
+//   { label: "Low", value: "low" },
+//   { label: "Medium", value: "medium" },
+//   { label: "High", value: "high" },
+// ];
+
+const RequestAssetModal = ({ isOpen, onClose, refreshInventory }) => {
+  const [category, setCategory] = useState("");
+  const [notes, setNotes] = useState("");
+
+  const [loading, setLoading] = useState(false);
+  // const [priority, setPriority] =
+  //   useState("medium");
+  const handleSubmitRequest = async () => {
+    try {
+      if (!category) {
+        alert("Please select asset category");
+
+        return;
+      }
+
+      setLoading(true);
+
+      const user = getUser();
+
+      await requestAssetApi({
+        userId: user._id,
+
+        assetName: category,
+
+        category,
+      });
+
+      await refreshInventory();
+
+      setCategory("");
+
+      setNotes("");
+
+      onClose();
+    } catch (error) {
+      console.log("Request Asset Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <Modal
       isOpen={isOpen}
@@ -32,101 +80,88 @@ const RequestAssetModal = ({ isOpen, onClose }) => {
       hideFooter={true}
       customClass="request-modal-container"
     >
-      <div className="request-modal-layout">
-        {/* LEFT PANEL */}
-        <div className="request-left-panel">
-          <div className="request-illustration">
-            <Laptop size={56} />
+      <div className="request-modal">
+        {/* HEADER */}
+        <div className="request-header">
+          <div>
+            <h2>Request Asset</h2>
+
+            <p>Submit a request for company inventory items.</p>
           </div>
 
-          <h2>Request New Asset</h2>
+          <button className="request-close-btn" onClick={onClose}>
+            <X size={18} />
+          </button>
+        </div>
 
-          <p>
-            Easily request company assets for your work needs. Your request will
-            be reviewed and approved by the admin team.
-          </p>
+        {/* BODY */}
+        <div className="request-body">
+          {/* CATEGORY */}
+          <div className="request-field">
+            <Dropdown
+              label="Asset Category"
+              options={categoryOptions}
+              value={category}
+              onChange={setCategory}
+              placeholder="Select asset category"
+              searchable={true}
+            />
+          </div>
 
-          <div className="request-tips">
-            <div className="tip-item">✓ Select correct asset category</div>
+          {/* PRIORITY */}
+          {/* <div className="request-field">
+            <Dropdown
+              label="Priority"
+              options={priorityOptions}
+              value={priority}
+              onChange={setPriority}
+              placeholder="Select priority"
+            />
+          </div> */}
 
-            <div className="tip-item">✓ Mention proper reason</div>
+          {/* DATE */}
+          {/* <div className="request-field">
+            <label>
+              Required Date
+            </label>
 
-            <div className="tip-item">✓ Choose required priority</div>
+            <input type="date" />
+          </div> */}
+
+          {/* REASON */}
+          {/* <div className="request-field">
+            <label>Reason</label>
+
+            <input
+              type="text"
+              placeholder="Enter reason for request"
+            />
+          </div> */}
+
+          {/* NOTES */}
+          <div className="request-field full-width">
+            <label>Additional Notes</label>
+
+            <textarea
+              placeholder="Write additional details..."
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+            />
           </div>
         </div>
 
-        {/* RIGHT PANEL */}
-        <div className="request-right-panel">
-          <div className="request-form-header">
-            <h3>Asset Request Form</h3>
-
-            <button onClick={onClose}>✕</button>
-          </div>
-
-          {/* Asset Type */}
-          <div className="request-field">
-            <label>Select Asset Type</label>
-
-            <div className="asset-options-grid">
-              {assetOptions.map((item, index) => (
-                <button
-                  className={`asset-option ${index === 0 ? "active" : ""}`}
-                  key={index}
-                >
-                  {item.icon}
-                  <span>{item.title}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Priority */}
-          <div className="request-field">
-            <label>Priority</label>
-
-            <select>
-              <option>Medium</option>
-              <option>Low</option>
-              <option>High</option>
-            </select>
-          </div>
-
-          {/* Date */}
-          <div className="request-field">
-            <label>Required Date</label>
-
-            <input type="date" />
-          </div>
-
-          {/* Reason */}
-          <div className="request-field">
-            <label>Reason</label>
-
-            <input type="text" placeholder="Enter reason for request" />
-          </div>
-
-          {/* Notes */}
-          <div className="request-field">
-            <label>Additional Notes</label>
-
-            <textarea placeholder="Write additional details..." />
-          </div>
-
-          {/* Upload */}
-          <div className="request-field">
-            <label>Attachment</label>
-
-            <div className="request-upload-box">Upload supporting document</div>
-          </div>
-
-          {/* Footer */}
-          <div className="request-form-footer">
-            <button className="request-cancel-btn" onClick={onClose}>
-              Cancel
-            </button>
-
-            <button className="request-submit-btn">Submit Request</button>
-          </div>
+        {/* FOOTER */}
+        <div className="request-footer">
+          <button className="request-cancel-btn" onClick={onClose}>
+            Cancel
+          </button>
+          <button
+            className="request-submit-btn"
+            onClick={handleSubmitRequest}
+            disabled={loading}
+          >
+            {loading ? "Submitting..." : "Submit Request"}
+          </button>
         </div>
       </div>
     </Modal>
