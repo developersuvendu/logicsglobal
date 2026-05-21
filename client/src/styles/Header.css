@@ -9,6 +9,7 @@ width: calc(100% - 270px);
        padding: 6px 15px;
     background-color: #fff;
     border-bottom: 1px solid #e5e5e5;
+    height: 53px;
 }
 .profile {
     height: 34px;

@@ -102,3 +102,23 @@
 .apply-leave-button-wrapper {
     gap: 8px;
 }
+.leave-filter-dropdown {
+  width: 190px;
+}
+
+/* compact version for toolbar */
+.leave-filter-dropdown .dropdown-trigger {
+  height: 40px;
+  border-radius: 12px;
+  padding: 0 14px;
+}
+
+.leave-filter-dropdown .dropdown-value,
+.leave-filter-dropdown .dropdown-placeholder {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.leave-filter-dropdown .dropdown-menu {
+  border-radius: 16px;
+}

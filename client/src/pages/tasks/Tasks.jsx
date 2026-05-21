@@ -278,7 +278,7 @@ const Tasks = () => {
         setActiveTab={setActiveTab}
       />
 
-      {activeTab !== "timesheet" && (
+      {activeTab !== "timesheet" && activeTab !== "reports" && (
         <FilterBar
           setSearch={setSearch}
           sprints={sprints}

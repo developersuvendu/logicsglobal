@@ -1,18 +1,30 @@
-import React from 'react'
-import { useState } from 'react';
-import './styles/Leave.css';
-import CasualLeave from '../../assets/leave/casual-leave.svg';
-import SickLeave from '../../assets/leave/sick-leave.svg';
-import EarnedLeave from '../../assets/leave/ios-icon.svg';
-import CompOff from '../../assets/leave/web-users.svg';
-import LossOfPay from '../../assets/leave/uninstall-user.svg';
+import React from "react";
+import { useState } from "react";
+import "./styles/Leave.css";
+import CasualLeave from "../../assets/leave/casual-leave.svg";
+import SickLeave from "../../assets/leave/sick-leave.svg";
+import EarnedLeave from "../../assets/leave/ios-icon.svg";
+import CompOff from "../../assets/leave/web-users.svg";
+import LossOfPay from "../../assets/leave/uninstall-user.svg";
 
-import Chart from '../../components/common/Chart';
+import Chart from "../../components/common/Chart";
 
-import { CalendarDays, Plane, Heart, GraduationCap, Plus, Filter } from "lucide-react";
-import {Dialog} from '../../components/common/Dialog.jsx';
-import {CustomButton} from '../../components/common/CustomButton.jsx';
-import { ApplyLeaveModal } from './dilogs/ApplyLeavesDialog.jsx';
+import {
+  CalendarDays,
+  Plane,
+  Heart,
+  GraduationCap,
+  Plus,
+  Filter,
+} from "lucide-react";
+import { Dialog } from "../../components/common/Dialog.jsx";
+import { CustomButton } from "../../components/common/CustomButton.jsx";
+import { ApplyLeaveModal } from "./dilogs/ApplyLeavesDialog.jsx";
+import { useEffect } from "react";
+
+import { getLeavesApi } from "../../api/leaveApi";
+
+import { getUser } from "../../utils/storage";
 import {
   Table,
   TableBody,
@@ -21,93 +33,115 @@ import {
   TableHeader,
   TableRow,
 } from "../../components/common/Table";
-import {
-  Card
-} from "../../components/common/Card.jsx";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../components/common/Select.jsx";
-
-
-
-import { LeaveCard } from '../../components/LeaveCards/LeaveCard.jsx';
-
+import { Card } from "../../components/common/Card.jsx";
+import Dropdown from "../../components/common/Dropdown";
+import { LeaveCard } from "../../components/LeaveCards/LeaveCard.jsx";
 
 const baseChart = {
   credits: { enabled: false },
   title: {
-                text: null
-            },
+    text: null,
+  },
   chart: { backgroundColor: "transparent", style: { fontFamily: "inherit" } },
 };
 const columnOptions = {
   ...baseChart,
   chart: { ...baseChart.chart, type: "column", height: 280 },
   xAxis: {
-                lineColor: '#f6f7f8',
-                title: {
-                    text: ""
-                },
-                categories: ['Home', 'Documents', 'Billing', 'Media', 'FAQ'],
-
-            },
+    lineColor: "#f6f7f8",
+    title: {
+      text: "",
+    },
+    categories: ["Home", "Documents", "Billing", "Media", "FAQ"],
+  },
   yAxis: {
-                title: {
-                    text: null
-                },
-                gridLineColor: '#f6f7f8',
-                labels: {
-                    enabled: true
-                }
-            },
-            legend: {
-                enabled: false // Hide the series indicator (legend)
-            },
-            plotOptions: {
-                column: {
-                    dataLabels: {
-                        enabled: false,
-                        format: '{point.y}%',
-                        inside: false,
-                        verticalAlign: 'top',
-                        y: -10
-                    },
-                    borderColor: '#f9f9fb',
-                    borderWidth: 1,
-                    borderRadius: 5,
-                    pointWidth: 50,
-                    pointPadding: 0.4
-                },
-                series: {
-                    label: {
-                        enabled: false
-                    }
-                }
-            },
-  series: [{
-                type: 'column',
-                name: 'Deals',
-                color: '#4784fa',
-                data: [50, 35, 25, 15, 5]
-            }],
+    title: {
+      text: null,
+    },
+    gridLineColor: "#f6f7f8",
+    labels: {
+      enabled: true,
+    },
+  },
+  legend: {
+    enabled: false, // Hide the series indicator (legend)
+  },
+  plotOptions: {
+    column: {
+      dataLabels: {
+        enabled: false,
+        format: "{point.y}%",
+        inside: false,
+        verticalAlign: "top",
+        y: -10,
+      },
+      borderColor: "#f9f9fb",
+      borderWidth: 1,
+      borderRadius: 5,
+      pointWidth: 50,
+      pointPadding: 0.4,
+    },
+    series: {
+      label: {
+        enabled: false,
+      },
+    },
+  },
+  series: [
+    {
+      type: "column",
+      name: "Deals",
+      color: "#4784fa",
+      data: [50, 35, 25, 15, 5],
+    },
+  ],
 };
 
-const history = [
-  { id: "LV-1042", type: "Annual Leave", from: "12 Apr 2026", to: "18 Apr 2026", days: 7, status: "Approved", reason: "Family vacation" },
-  { id: "LV-1041", type: "Sick Leave", from: "02 Apr 2026", to: "03 Apr 2026", days: 2, status: "Approved", reason: "Flu" },
-  { id: "LV-1038", type: "Casual Leave", from: "20 Mar 2026", to: "20 Mar 2026", days: 1, status: "Pending", reason: "Personal work" },
-  { id: "LV-1031", type: "Annual Leave", from: "08 Feb 2026", to: "10 Feb 2026", days: 3, status: "Rejected", reason: "Short notice" },
-  { id: "LV-1027", type: "Casual Leave", from: "15 Jan 2026", to: "15 Jan 2026", days: 1, status: "Approved", reason: "Bank work" },
-];
+// const history = [
+//   { id: "LV-1042", type: "Annual Leave", from: "12 Apr 2026", to: "18 Apr 2026", days: 7, status: "Approved", reason: "Family vacation" },
+//   { id: "LV-1041", type: "Sick Leave", from: "02 Apr 2026", to: "03 Apr 2026", days: 2, status: "Approved", reason: "Flu" },
+//   { id: "LV-1038", type: "Casual Leave", from: "20 Mar 2026", to: "20 Mar 2026", days: 1, status: "Pending", reason: "Personal work" },
+//   { id: "LV-1031", type: "Annual Leave", from: "08 Feb 2026", to: "10 Feb 2026", days: 3, status: "Rejected", reason: "Short notice" },
+//   { id: "LV-1027", type: "Casual Leave", from: "15 Jan 2026", to: "15 Jan 2026", days: 1, status: "Approved", reason: "Bank work" },
+// ];
 
 const Leave = () => {
+  const [leaves, setLeaves] = useState([]);
 
-   const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("all");
   const [openApplyLeaveModal, setOpenApplyLeaveModal] = useState(false);
+  const fetchLeaves = async () => {
+    try {
+      const user = getUser();
+
+      const response = await getLeavesApi({
+        userId: user._id,
+      });
+
+      const formattedLeaves = response.data.map((leave, index) => ({
+        id: leave._id.slice(-6) || index,
+
+        type: leave.leaveType,
+
+        from: leave.startDate,
+
+        to: leave.endDate,
+
+        days: leave.days,
+
+        reason: leave.reason,
+
+        status: leave.status,
+      }));
+
+      setLeaves(formattedLeaves);
+    } catch (error) {
+      console.log("Fetch Leaves Error :", error);
+    }
+  };
+  useEffect(() => {
+    fetchLeaves();
+  }, []);
   return (
     <div className="leave-wrapper">
       <div className="tile_internal_row">
@@ -276,25 +310,26 @@ const Leave = () => {
                 View and track your leave applications
               </p>
             </div>
-            <div className='flex align-center apply-leave-button-wrapper'>
+            <div className="flex align-center apply-leave-button-wrapper">
               <div>
-                <Select value={filter} onValueChange={setFilter}>
-                  <SelectTrigger className="w-40 h-10">
-                    <Filter className="filter-icon" />
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Status</SelectItem>
-                    <SelectItem value="approved">Approved</SelectItem>
-                    <SelectItem value="pending">Pending</SelectItem>
-                    <SelectItem value="rejected">Rejected</SelectItem>
-                  </SelectContent>
-                </Select>
+                <div className="leave-filter-dropdown">
+                  <Dropdown
+                    value={filter}
+                    onChange={setFilter}
+                    placeholder="Filter Status"
+                    options={[
+                      { label: "All Status", value: "all" },
+                      { label: "Approved", value: "approved" },
+                      { label: "Pending", value: "pending" },
+                      { label: "Rejected", value: "rejected" },
+                    ]}
+                  />
+                </div>
               </div>
               <div>
                 <CustomButton onClick={() => setOpenApplyLeaveModal(true)}>
                   <Plus className="custom-button-icon" />
-                  New Request 
+                  New Request
                 </CustomButton>
                 {/* <button className="custom-button apply-leave-button">
                   <Plus className="custom-button-icon plus-icon" />
@@ -316,7 +351,7 @@ const Leave = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {history.map((h) => (
+              {leaves.map((h) => (
                 <TableRow key={h.id}>
                   <TableCell className="font-medium">{h.id}</TableCell>
                   <TableCell>{h.type}</TableCell>
@@ -337,6 +372,7 @@ const Leave = () => {
       <ApplyLeaveModal
         isOpen={openApplyLeaveModal}
         onClose={() => setOpenApplyLeaveModal(false)}
+        refreshLeaves={fetchLeaves}
       />
     </div>
     // <div className="leave-wrapper">

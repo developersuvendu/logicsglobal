@@ -4,6 +4,7 @@ import Input from "../../../components/common/Input";
 import Dropdown from "../../../components/common/Dropdown";
 import Button from "../../../components/common/Button";
 import "../styles/CreateTaskModal.css";
+import DatePickerField from "../../../components/common/DatePickerField";
 
 const CreateTaskModal = ({ isOpen, onClose, onCreate }) => {
   const [form, setForm] = useState({
@@ -13,8 +14,8 @@ const CreateTaskModal = ({ isOpen, onClose, onCreate }) => {
     priority: "",
     type: "task",
     status: "todo",
-    startDate: "",
-    endDate: "",
+    startDate: null,
+    endDate: null,
     sprint: "",
   });
 
@@ -55,14 +56,11 @@ const CreateTaskModal = ({ isOpen, onClose, onCreate }) => {
           <Button variant="outline" onClick={onClose}>
             Cancel
           </Button>
-          <Button onClick={handleSubmit}>
-            Create {form.type}
-          </Button>
+          <Button onClick={handleSubmit}>Create {form.type}</Button>
         </>
       }
     >
       <div className="create-task">
-
         {/* TYPE */}
         <div className="type-toggle">
           {["epic", "story", "task", "bug"].map((t) => (
@@ -95,20 +93,18 @@ const CreateTaskModal = ({ isOpen, onClose, onCreate }) => {
         {/* DATES */}
         <div className="date-row">
           <div className="field">
-            <label>Start Date</label>
-            <input
-              type="date"
-              value={form.startDate}
-              onChange={(e) => handleChange("startDate", e.target.value)}
+            <DatePickerField
+              label="Start Date"
+              selected={form.startDate}
+              onChange={(date) => handleChange("startDate", date)}
             />
           </div>
 
           <div className="field">
-            <label>End Date</label>
-            <input
-              type="date"
-              value={form.endDate}
-              onChange={(e) => handleChange("endDate", e.target.value)}
+            <DatePickerField
+              label="End Date"
+              selected={form.endDate}
+              onChange={(date) => handleChange("endDate", date)}
             />
           </div>
         </div>
@@ -156,7 +152,6 @@ const CreateTaskModal = ({ isOpen, onClose, onCreate }) => {
             { label: "Done", value: "done" },
           ]}
         />
-
       </div>
     </Modal>
   );

@@ -11,6 +11,5 @@ export const loginUser = async (formData) => {
   );
 
   saveUser(response.user);
-
   return response;
 };

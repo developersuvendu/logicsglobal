@@ -2,23 +2,21 @@ import axiosInstance from "./axiosInstance";
 
 import { API_ENDPOINTS } from "../constants/apiConstants";
 
-export const getInventoryApi = async (userId) => {
+export const getLeavesApi = async (data) => {
   const response = await axiosInstance.post(
-    API_ENDPOINTS.INVENTORY.GET,
+    API_ENDPOINTS.LEAVES.GET,
 
-    {
-      userId,
-    },
+    data,
   );
 
   return response.data;
 };
 
-export const requestAssetApi = async (requestData) => {
+export const applyLeaveApi = async (data) => {
   const response = await axiosInstance.post(
-    API_ENDPOINTS.INVENTORY.ADD,
+    API_ENDPOINTS.LEAVES.APPLY,
 
-    requestData,
+    data,
   );
 
   return response.data;
