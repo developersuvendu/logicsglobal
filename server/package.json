@@ -13,10 +13,13 @@
   "type": "module",
   "dependencies": {
     "@fastify/cors": "^11.2.0",
+    "@fastify/multipart": "^10.0.0",
+    "cloudinary": "^2.10.0",
     "dotenv": "^17.4.2",
     "fastify": "^5.8.5",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.6.2",
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "streamifier": "^0.1.1"
   }
 }

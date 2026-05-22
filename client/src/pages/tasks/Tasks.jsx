@@ -8,6 +8,8 @@ import Backlog from "./components/Backlog";
 import ListView from "./components/ListView";
 import Timesheet from "./components/Timesheet";
 import { DragDropContext } from "@hello-pangea/dnd";
+import Reports from "./components/reports/Reports";
+import "./styles/tasks.css";
 const Tasks = () => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -327,6 +329,7 @@ const Tasks = () => {
       {activeTab === "list" && <ListView tasks={tasks} />}
 
       {activeTab === "timesheet" && <Timesheet tasks={tasks} sprint={sprint} />}
+      {activeTab === "reports" && <Reports />}
     </div>
   );
 };

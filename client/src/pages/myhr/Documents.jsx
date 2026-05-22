@@ -1,4 +1,4 @@
-import './styles/Documents.css';
+import "./styles/Documents.css";
 
 import {
   FileText,
@@ -10,10 +10,18 @@ import {
   IdCard,
   GraduationCap,
   Briefcase,
-  ShieldCheck, Plus, CircleCheck
+  ShieldCheck,
+  Plus,
+  CircleCheck,
 } from "lucide-react";
 import { useState } from "react";
-import { CustomButton } from '../../components/common/CustomButton';
+import { CustomButton } from "../../components/common/CustomButton";
+import UploadDocumentModal from "./UploadDocumentModal";
+import { useEffect } from "react";
+
+import { getDocumentsApi } from "../../api/documentApi";
+
+import { getUser } from "../../utils/storage";
 
 const categories = [
   { id: "personal", label: "Personal", icon: IdCard, count: 4 },
@@ -22,28 +30,51 @@ const categories = [
   { id: "compliance", label: "Compliance", icon: ShieldCheck, count: 2 },
 ];
 
-const docs = [
-  { name: "Passport.pdf", category: "Personal", size: "1.2 MB", date: "12 Jan 2026", status: "Verified" },
-  { name: "National ID.pdf", category: "Personal", size: "820 KB", date: "12 Jan 2026", status: "Verified" },
-  { name: "Offer Letter.pdf", category: "Employment", size: "340 KB", date: "08 Jan 2026", status: "Verified" },
-  { name: "Employment Contract.pdf", category: "Employment", size: "1.8 MB", date: "08 Jan 2026", status: "Verified" },
-  { name: "NDA Agreement.pdf", category: "Employment", size: "560 KB", date: "08 Jan 2026", status: "Verified" },
-  { name: "B.Tech Degree.pdf", category: "Education", size: "2.1 MB", date: "05 Jan 2026", status: "Verified" },
-  { name: "Class XII Marksheet.pdf", category: "Education", size: "1.4 MB", date: "05 Jan 2026", status: "Pending" },
-  { name: "Tax Declaration.pdf", category: "Compliance", size: "420 KB", date: "20 Mar 2026", status: "Pending" },
-];
-
-
 const Documents = () => {
-    const [open, setOpen] = useState(false);
+  const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(null);
+  const [documents, setDocuments] = useState([]);
 
-  const filtered = docs.filter(
+  const filtered = documents.filter(
     (d) =>
       (!active || d.category.toLowerCase() === active) &&
-      d.name.toLowerCase().includes(query.toLowerCase())
+      d.name.toLowerCase().includes(query.toLowerCase()),
   );
+  const fetchDocuments = async () => {
+    try {
+      const user = getUser();
+
+      const response = await getDocumentsApi({
+        userId: user._id,
+      });
+
+      const formattedDocs = response.data.map((doc) => ({
+        name: doc.documentName,
+
+        category: doc.category,
+
+        size: `${(doc.fileSize / 1024 / 1024).toFixed(2)} MB`,
+
+        date: new Date(doc.createdAt).toLocaleDateString(),
+
+        status: "Verified",
+
+        fileUrl: doc.fileUrl,
+      }));
+
+      setDocuments(formattedDocs);
+    } catch (error) {
+      console.log("Fetch Documents Error :", error);
+    }
+  };
+  useEffect(() => {
+    const loadDocuments = async () => {
+      await fetchDocuments();
+    };
+
+    loadDocuments();
+  }, []);
   return (
     <div className="space-y-6">
       <div className="documents-card-grid grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -59,13 +90,21 @@ const Documents = () => {
                   : "border-border bg-card hover:border-primary/30"
               }`}
             >
-              <div className={`document-card-icon-div h-10 w-10 rounded-xl flex items-center justify-center mb-3 ${
-                isActive ? "bg-primary text-primary-foreground" : "bg-muted text-foreground"
-              }`}>
+              <div
+                className={`document-card-icon-div h-10 w-10 rounded-xl flex items-center justify-center mb-3 ${
+                  isActive
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-foreground"
+                }`}
+              >
                 <c.icon className="h-5 w-5" />
               </div>
-              <div className="document-card-heading font-semibold">{c.label}</div>
-              <div className="text-sm text-muted-foreground ">{c.count} documents</div>
+              <div className="document-card-heading font-semibold">
+                {c.label}
+              </div>
+              <div className="text-sm text-muted-foreground ">
+                {c.count} documents
+              </div>
             </button>
           );
         })}
@@ -82,19 +121,24 @@ const Documents = () => {
               className="document-search-box"
             />
           </div>
-          <CustomButton>
-             <Upload className="upload-btn-icon" /> Upload Document
+          <CustomButton onClick={() => setIsUploadOpen(true)}>
+            <Upload className="upload-btn-icon" /> Upload Document
           </CustomButton>
         </div>
 
         <div className="divide-y divide-border">
           {filtered.map((d) => (
-            <div key={d.name} className="flex items-center transition document-grid-row">
+            <div
+              key={d.name}
+              className="flex items-center transition document-grid-row"
+            >
               <div className="h-11 w-11 rounded-xl bg-primary-soft text-primary flex items-center justify-center shrink-0 document-grid-icon-wrapper">
                 <FileText className="h-5 w-5" />
               </div>
               <div className="flex-1 min-w-0">
-                <div className="document-card-heading text-ellipsis">{d.name}</div>
+                <div className="document-card-heading text-ellipsis">
+                  {d.name}
+                </div>
                 <div className="text-xs text-muted-foreground">
                   {d.category} · {d.size} · Uploaded {d.date}
                 </div>
@@ -106,20 +150,45 @@ const Documents = () => {
                     : "bg-warning-soft text-warning"
                 }`}
               >
-                {d.status === "Verified" && <CircleCheck className='icon'/>}
+                {d.status === "Verified" && <CircleCheck className="icon" />}
                 {d.status}
               </div>
-              <button className='grid-button'><Eye className="grid-view-icon" /></button>
-              <button className='grid-button'><Download className="grid-download-icon" /></button>
+              <button
+                className="grid-button"
+                onClick={() => window.open(d.fileUrl, "_blank")}
+              >
+                <Eye className="grid-view-icon" />
+              </button>
+              <button
+                className="grid-button"
+                onClick={() => {
+                  const link = document.createElement("a");
+
+                  link.href = d.fileUrl;
+
+                  link.download = d.name;
+
+                  link.click();
+                }}
+              >
+                <Download className="grid-download-icon" />
+              </button>
             </div>
           ))}
           {filtered.length === 0 && (
-            <div className="p-10 text-center text-muted-foreground">No documents found.</div>
+            <div className="p-10 text-center text-muted-foreground">
+              No documents found.
+            </div>
           )}
         </div>
       </div>
+      <UploadDocumentModal
+        isOpen={isUploadOpen}
+        onClose={() => setIsUploadOpen(false)}
+        refreshDocuments={fetchDocuments}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Documents
+export default Documents;

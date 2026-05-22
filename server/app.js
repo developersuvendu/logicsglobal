@@ -9,13 +9,18 @@ import { connectDB } from "./src/config/connect.js";
 import { PORT } from "./src/config/config.js";
 
 import { registerRoutes } from "./src/routes/index.js";
+import multipart from "@fastify/multipart";
 
 const app = fastify();
 
 const startServer = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
-
+    await app.register(multipart, {
+      limits: {
+        fileSize: 10 * 1024 * 1024, 
+      },
+    });
     await app.register(cors, {
       origin: ["http://localhost:5173"],
 
