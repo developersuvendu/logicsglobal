@@ -301,7 +301,7 @@ const Leave = () => {
         {/* <Chart options={columnOptions} />
        <Chart options={columnOptions} /> */}
         <Card className="leave-history-card">
-          <div className="flex justify-between border border-bottom table-toolbar">
+          <div className="flex justify-between table-toolbar">
             <div>
               <h2 className="text text-lg font-semibold table-title">
                 Leave History

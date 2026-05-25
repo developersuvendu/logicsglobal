@@ -16,7 +16,7 @@ import RecentFlight from '../assets/recent-flight.svg';
 import BannerIllustration from '../assets/human.svg';
 import RedBannerIllustration from '../assets/human-red.svg';
 
-import { Star,ArrowUp, X, CalendarDays, Video,Cake } from 'lucide-react';
+import { Star,ArrowUp, X, CalendarDays, Video,Cake, BadgeCheck } from 'lucide-react';
 import Calender25 from '../assets/calender-25.svg';
 import Computer from '../assets/computer.svg';
 import Wifi from '../assets/wifi.svg';
@@ -241,21 +241,77 @@ export default class Dashboard extends React.Component {
         </div>
         <div className="profile-overview-wrapper">
           <div className="profile-overview">
-            {/* <h2 className="heading-text quick-link-heading-text">Profile Overview</h2> */}
-              <div className="profile-header">
-
-              </div>
-              <div className="profile-image-wrapper">
-<img src={ProfileOverview} alt="" />
-              </div>
-              <div className='flex align-center' style={{"display":"flex","marginBottom":"3px"}}>
-                <div><h2 className="heading-text quick-link-heading-text" style={{"marginBottom":"0px"}}>Suvendu Mohanta</h2></div>
-                <div><p className="designation-text">Active</p></div>
+            <div className="profile-header"></div>
+            <div className="profile-image-wrapper">
+              <img src={ProfileOverview} alt="" />
+            </div>
+            <div className='flex align-center' style={{ "display": "flex", "marginBottom": "3px" }}>
+              <div>
+                <h2 className="heading-text quick-link-heading-text" style={{ "marginBottom": "0px" }}>Suvendu Mohanta</h2>
               </div>
               <div>
-                <p className='text-muted-foreground'>HR Manager</p>
-                <p className='text-muted-foreground'>+91 9078322645</p>
+                
               </div>
+            </div>
+            <div>
+              <p className='text-xs muted'>HR Manager</p>
+              <div style={{"display":"flex"}}>
+                  <div>
+                    <p className='text-sm muted'>Emp Id</p>
+                  </div>
+                  <div>
+                    <p className='text-sm '>+91 9078322645</p>
+                  </div>
+              </div>
+              <div style={{"display":"flex"}}>
+                  <div>
+                    <p className='text-sm muted'>Emp Id</p>
+                  </div>
+                  <div>
+                    <p className='text-sm '>LOG001</p>
+                  </div>
+              </div>
+              <div style={{"display":"flex"}}>
+                  <div>
+                    <p className='text-sm muted'>Mobile Number</p>
+                  </div>
+                  <div>
+                    <p className='text-sm '>+91 9078322645</p>
+                  </div>
+              </div>
+              <div style={{"display":"flex"}}>
+                  <div>
+                    <p className='text-sm muted'>Email Id</p>
+                  </div>
+                  <div>
+                    <p className='text-sm '>suvendu@logics.com</p>
+                  </div>
+              </div>
+              <div style={{"display":"flex"}}>
+                  <div>
+                    <p className='text-sm muted'>Department</p>
+                  </div>
+                  <div>
+                    <p className='text-sm '>Logics Banglore</p>
+                  </div>
+              </div>
+              <div style={{"display":"flex"}}>
+                  <div>
+                    <p className='text-sm muted'>Employee Type</p>
+                  </div>
+                  <div>
+                    <p className='text-sm '>Full Type</p>
+                  </div>
+              </div>
+              <div style={{"display":"flex"}}>
+                  <div>
+                    <p className='text-sm muted'>Employee Since</p>
+                  </div>
+                  <div>
+                    <p className='text-sm '>06-09-2026</p>
+                  </div>
+              </div>
+            </div>
           </div>
           <div className="upcoming-events-wrapper">
             <h2 className="heading-text upcoming-events-heading-text quick-link-heading-text">Upcoming Events</h2>

@@ -21,9 +21,13 @@
     background-color: #fff;
     border: 1px solid red;
     padding: 12px 15px;
-    border-radius: 7px;
+    border-radius: 12px;
     border: 1px solid #e5e5e5;
     height: 50%;
+    
+    border: 2px solid #ffffff;
+    background-color: #f8fafc;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
 }
 .heading-text {
     color: #0f172b;
@@ -57,6 +61,13 @@
     position: relative ;
     padding: 25px;
         padding-right: 237px;
+        box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 #0000000d;
+    border: 1px solid #e31c3a1a;
+    background-image: linear-gradient(to bottom right, #feecee, #feecee00);
+
+    border: 2px solid #ffffff;
+    background-color: #f8fafc;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
 }
 .banner-illustration {
     /* width: 171px;
@@ -75,6 +86,7 @@
         margin-top: 8px;
     color: #0a193f;
     line-height: 22px;
+    font-size: 15px;
 }
 /*------------------------------------------------------Banner Image CSS-----------------------------------------*/
 .banner-image {
@@ -166,6 +178,10 @@ display: flex;
     border: 1px solid #e5e5e5;
     background-color: #fff;
     box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
+
+    border: 2px solid #ffffff;
+    background-color: #f8fafc;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
 }
 .todo-heading-text-wrapper{
     display: flex;
@@ -240,6 +256,10 @@ display: flex;
     box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
     min-width: 150px;
     cursor: pointer;
+    
+    border: 2px solid #ffffff;
+    background-color: #f8fafc;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
 }
 p.quick-link-text {
     margin-top: 4px;
@@ -386,9 +406,10 @@ margin-bottom: 14px;
 /*Profile Overview*/
 .profile-header {
     height: 79px;
-    background-color: #fee7ec;
+    /* background-color: #fee7ec; */
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+    background-image: linear-gradient(to bottom right, #feecee, #feecee00);
 }
 .profile-image-wrapper {
 height: 70px;
@@ -407,16 +428,4 @@ height: 70px;
     border-radius: 50%;
     border: 4px solid #fff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-.designation-text {
-    color: #03732cb8;
-    line-height: 10px;
-    font-size: 10px;
-    background: #9ce1b34d;
-    padding: 2px 6px;
-    padding-bottom: 3px;
-    margin-left: 4px;
-    border-radius: 4px;
-    position: relative;
-    top: 2px;
 }

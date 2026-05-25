@@ -21,6 +21,11 @@
   --small-notification-card-text-color: #4b4949;
 
   --font-family: "Inter", sans-serif;
+
+
+
+    --muted: #f1f4f8;
+    --muted-foreground: #afafaf;
 }
 
 * {
@@ -79,6 +84,15 @@ body {
 .text-decoration-none {
   text-decoration: none;
 }
+/* ============================================
+   Colors
+   ============================================ */
+.muted{
+  color: var(--muted-foreground);
+}
+/* ============================================
+   Text CSS
+   ============================================ */
 .text {
   color: var(--text-color);
   font-size: var(--text-font-size);
@@ -91,13 +105,11 @@ body {
   font-size: 14px;
   line-height: 20px;
 }
-.text-medium {
+.text-xs {
+  font-size: 14px;
+  line-height: 20px;
 }
 
-.text-mutted {
-}
-.card-heading {
-}
 .text-heading {
   color: var(--text-heading);
   font-size: var(--text-heading-font-size);
