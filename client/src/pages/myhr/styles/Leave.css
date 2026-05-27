@@ -71,8 +71,11 @@
 .performance_decription {
     font-family: 'Nunito Sans', sans-serif;
 }
-.leave-history-card {
+.card.leave-history-card {
     margin-top: 24px;
+        border: 2px solid #ffffff;
+    background-color: #f8fafc;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
 }
 .table-toolbar {
    padding: 20px;

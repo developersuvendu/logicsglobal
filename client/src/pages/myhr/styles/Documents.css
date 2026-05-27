@@ -6,6 +6,9 @@
     border-radius: 12px;
     cursor: pointer;
         text-align: left;
+        border: 2px solid #ffffff;
+    background-color: #f8fafc;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
 }
 .documents-card:hover {
     border-color: #e11d484d;
@@ -48,6 +51,9 @@
     border-radius: 12px;
     border: 1px solid #e7eaee;
     margin-top: 24px;
+        border: 2px solid #ffffff;
+    background-color: #f8fafc;
+    box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.05);
 }
 .document-grid-toolbar {
     padding: 20px;
