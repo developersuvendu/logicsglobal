@@ -53,3 +53,163 @@
 
   align-items: start;
 }
+/* =========================================================
+   ONBOARDING HERO
+========================================================= */
+
+.onboarding-hero-card{
+  display: flex;
+  flex-direction: column;
+
+  gap: 28px;
+
+  padding: 28px 30px;
+
+  border-radius: 28px;
+
+  border: 1px solid #FBCDD6;
+
+  background:
+    linear-gradient(
+      135deg,
+      #FFF4F6 0%,
+      #FFF8FA 40%,
+      #FFFFFF 100%
+    );
+
+  box-shadow:
+    0 14px 40px rgba(15,23,42,0.04),
+    0 6px 18px rgba(15,23,42,0.03);
+}
+
+/* =========================
+   HERO TEXT
+========================= */
+
+.onboarding-hero-title{
+  font-size: 34px;
+
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  color: #0F172A;
+
+  margin-bottom: 12px;
+}
+
+.onboarding-hero-description{
+  max-width: 520px;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+
+  color: #64748B;
+}
+
+/* =========================
+   STATS ROW
+========================= */
+
+.onboarding-progress-stats{
+  display: flex;
+  align-items: center;
+
+  gap: 34px;
+
+  flex-wrap: wrap;
+}
+
+.onboarding-progress-stat-card{
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.progress-stat-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 999px;
+}
+
+.progress-icon-primary{
+  background: rgba(99,102,241,0.12);
+  color: #6366F1;
+}
+
+.progress-icon-success{
+  background: rgba(34,197,94,0.12);
+  color: #22C55E;
+}
+
+.progress-icon-warning{
+  background: rgba(251,191,36,0.12);
+  color: #F59E0B;
+}
+
+.progress-icon-danger{
+  background: rgba(244,63,94,0.12);
+  color: #F43F5E;
+}
+
+.onboarding-progress-stat-card h3{
+  font-size: 18px;
+  font-weight: 800;
+
+  color: #0F172A;
+
+  margin-bottom: 2px;
+}
+
+.onboarding-progress-stat-card p{
+  font-size: 13px;
+
+  color: #64748B;
+
+  font-weight: 500;
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.onboarding-progress-bar-wrapper{
+  width: 100%;
+}
+
+.onboarding-progress-bar-track{
+  position: relative;
+
+  width: 100%;
+  height: 8px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: #F1F5F9;
+}
+
+.onboarding-progress-bar-fill{
+  width: 50%;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #FB7185,
+      #E11D48
+    );
+
+  box-shadow:
+    0 4px 14px rgba(225,29,72,0.25);
+}
