@@ -267,3 +267,14 @@ body {
   font-size: 12px;
   line-height: 16px;
 }
+
+
+.row {
+    display: flex;
+}
+.row-gap-2 {
+    gap: 8px;
+}
+.row-wrap {
+    flex-wrap: wrap;
+}

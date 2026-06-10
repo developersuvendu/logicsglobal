@@ -1,16 +1,5 @@
-import React, {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-
-import {
-  ChevronDown,
-  Search,
-  Check,
-} from "lucide-react";
-
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { ChevronDown, Search, Check } from "lucide-react";
 import "../../styles/Common/dropdown.css";
 
 const Dropdown = ({
@@ -23,9 +12,7 @@ const Dropdown = ({
   disabled = false,
 }) => {
   const [open, setOpen] = useState(false);
-
   const [search, setSearch] = useState("");
-
   const dropdownRef = useRef(null);
 
   /* CLOSE OUTSIDE */
@@ -68,12 +55,7 @@ const Dropdown = ({
   }, [options, search, searchable]);
 
   return (
-    <div
-      className={`dropdown-group ${
-        disabled ? "dropdown-disabled" : ""
-      }`}
-      ref={dropdownRef}
-    >
+    <div className={`dropdown-group ${ disabled ? "dropdown-disabled" : "" }`} ref={dropdownRef}>
       {label && (
         <label className="dropdown-label">
           {label}
@@ -81,32 +63,14 @@ const Dropdown = ({
       )}
 
       {/* TRIGGER */}
-      <button
-        type="button"
-        className={`dropdown-trigger ${
-          open ? "dropdown-open" : ""
-        }`}
+      <button type="button" className={`dropdown-trigger ${ open ? "dropdown-open" : "" }`}
         onClick={() =>
           !disabled && setOpen(!open)
-        }
-      >
-        <span
-          className={
-            selectedOption
-              ? "dropdown-value"
-              : "dropdown-placeholder"
-          }
-        >
-          {selectedOption?.label ||
-            placeholder}
+        }>
+        <span className={ selectedOption? "dropdown-value" : "dropdown-placeholder" }>
+          {selectedOption?.label || placeholder}
         </span>
-
-        <ChevronDown
-          size={18}
-          className={`dropdown-arrow ${
-            open ? "rotate-arrow" : ""
-          }`}
-        />
+        <ChevronDown size={18} className={`dropdown-arrow ${ open ? "rotate-arrow" : "" }`}/>
       </button>
 
       {/* MENU */}
@@ -118,14 +82,10 @@ const Dropdown = ({
             <div className="dropdown-search">
               <Search size={16} />
 
-              <input
-                type="text"
-                placeholder="Search..."
-                value={search}
+              <input type="text" placeholder="Search..." value={search}
                 onChange={(e) =>
                   setSearch(e.target.value)
-                }
-              />
+                }/>
             </div>
           )}
 
@@ -133,27 +93,14 @@ const Dropdown = ({
           <div className="dropdown-options">
             {filteredOptions.length > 0 ? (
               filteredOptions.map((opt) => (
-                <button
-                  type="button"
-                  key={opt.value}
-                  className={`dropdown-option ${
-                    value === opt.value
-                      ? "active-option"
-                      : ""
-                  }`}
+                <button type="button" key={opt.value} className={`dropdown-option ${ value === opt.value ? "active-option" : "" }`}
                   onClick={() => {
                     onChange(opt.value);
-
                     setOpen(false);
-
                     setSearch("");
-                  }}
-                >
+                  }}>
                   <span>{opt.label}</span>
-
-                  {value === opt.value && (
-                    <Check size={16} />
-                  )}
+                  {value === opt.value && ( <Check size={16} /> )}
                 </button>
               ))
             ) : (
@@ -162,7 +109,6 @@ const Dropdown = ({
               </div>
             )}
           </div>
-
         </div>
       )}
     </div>

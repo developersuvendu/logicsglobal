@@ -660,32 +660,22 @@ export default class Dashboard extends React.Component {
           </div>
         </div>
         <div className="dashboard-bottom-section">
-          {/* ATTENDANCE INSIGHTS */}
 
-          <div className="analytics-card">
+
+          {/* <div className="analytics-card">
             <div className="analytics-card-header">
               <div>
                 <h2 className="analytics-heading">Attendance Insights</h2>
-
                 <p className="analytics-subtitle">Last 7 Days Working Hours</p>
               </div>
-
               <div className="analytics-badge">+12%</div>
             </div>
-
-            {/* CHART AREA */}
-
             <div className="analytics-chart-wrapper">
-              {/* HIGHCHARTS COMPONENT HERE */}
-
               <HighchartsReact
                 highcharts={Highcharts}
                 options={attendanceChartOptions}
               />
             </div>
-
-            {/* BOTTOM STATS */}
-
             <div className="analytics-stats-row">
               <div className="analytics-stat-card">
                 <p className="analytics-stat-label">Avg Hours</p>
@@ -705,28 +695,21 @@ export default class Dashboard extends React.Component {
                 <h3 className="analytics-stat-value">96%</h3>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* LEAVE ANALYTICS */}
 
-          <div className="analytics-card">
+          {/* <div className="analytics-card">
             <div className="analytics-card-header">
               <div>
                 <h2 className="analytics-heading">Leave Analytics</h2>
-
                 <p className="analytics-subtitle">
                   Monthly Leave Trends & Usage
                 </p>
               </div>
-
               <div className="analytics-badge leave-badge">2026</div>
             </div>
-
-            {/* CHART AREA */}
-
             <div className="analytics-chart-wrapper">
-              {/* HIGHCHARTS DONUT HERE */}
-
               <HighchartsReact
                 highcharts={Highcharts}
                 options={leaveChartOptions}
@@ -734,43 +717,23 @@ export default class Dashboard extends React.Component {
             </div>
             <div className="leave-legends-row">
               <div className="leave-legend-item">
-                <span
-                  className="legend-dot"
-                  style={{ background: "#FB7185" }}
-                ></span>
-
+                <span className="legend-dot" style={{ background: "#FB7185" }}></span>
                 <span>Casual Leave</span>
               </div>
-
               <div className="leave-legend-item">
-                <span
-                  className="legend-dot"
-                  style={{ background: "#A78BFA" }}
-                ></span>
-
+                <span className="legend-dot" style={{ background: "#A78BFA" }}></span>
                 <span>Sick Leave</span>
               </div>
-
               <div className="leave-legend-item">
-                <span
-                  className="legend-dot"
-                  style={{ background: "#34D399" }}
-                ></span>
-
+                <span className="legend-dot" style={{ background: "#34D399" }}></span>
                 <span>Earned Leave</span>
               </div>
-
               <div className="leave-legend-item">
-                <span
-                  className="legend-dot"
-                  style={{ background: "#FBBF24" }}
-                ></span>
-
+                <span className="legend-dot" style={{ background: "#FBBF24" }}></span>
                 <span>Comp Off</span>
               </div>
             </div>
-            {/* LEAVE LEGENDS */}
-          </div>
+          </div> */}
         </div>
       </div>
     );

@@ -1,15 +1,10 @@
 import "dotenv/config";
-
 import fastify from "fastify";
-
 import cors from "@fastify/cors";
-
-import { connectDB } from "./src/config/connect.js";
-
-import { PORT } from "./src/config/config.js";
-
-import { registerRoutes } from "./src/routes/index.js";
 import multipart from "@fastify/multipart";
+import { connectDB } from "./src/config/connect.js";
+import { PORT } from "./src/config/config.js";
+import { registerRoutes } from "./src/routes/index.js";
 
 const app = fastify();
 
@@ -21,11 +16,10 @@ const startServer = async () => {
         fileSize: 10 * 1024 * 1024, 
       },
     });
+
     await app.register(cors, {
-      origin: ["http://localhost:5173"],
-
+      origin: true,
       methods: ["GET", "POST", "PUT", "DELETE"],
-
       credentials: true,
     });
 
@@ -45,7 +39,6 @@ const startServer = async () => {
     console.log(`Server running on http://localhost:${PORT}`);
   } catch (error) {
     console.error(error);
-
     process.exit(1);
   }
 };

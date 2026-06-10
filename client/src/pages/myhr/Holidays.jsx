@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { CalendarDays, MapPin, Filter, Download } from "lucide-react";
-
+import { CustomButton } from "../../components/common/CustomButton.jsx";
+import Dropdown from "../../components/common/Dropdown";
+import "./styles/HolidayList.css";
 const holidays = [
   { id: "H01", name: "New Year's Day", date: "01 Jan 2026", day: "Thursday", month: 1, type: "Public", location: "All Offices" },
   { id: "H02", name: "Republic Day", date: "26 Jan 2026", day: "Monday", month: 1, type: "Public", location: "India" },
@@ -30,7 +32,7 @@ const locations = ["All Locations", "All Offices", "India", "UAE"];
 export default function Holidays() {
   const [type, setType] = useState("All");
   const [loc, setLoc] = useState("All Locations");
-
+  const [location, setLocation] = useState("all");
   const filtered = holidays.filter(
     (h) =>
       (type === "All" || h.type === type) &&
@@ -52,31 +54,57 @@ export default function Holidays() {
     { label: "Next Holiday", value: next ? next.date.split(" ").slice(0, 2).join(" ") : "—", sub: next?.name ?? "—" },
   ];
 
+  const locationHandler=(e)=>{
+    console.log("Hello :",e);
+    setLoc(e);
+  }
   return (
     <div className="stack stack-6">
-      <div className="grid-4">
+      <div className="holiday-card-grid">
         {stats.map((s) => (
-          <div key={s.label} className="card p-5">
-            <div className="text-sm muted">{s.label}</div>
-            <div className="text-2xl font-bold" style={{ marginTop: 4 }}>{s.value}</div>
-            <div className="text-xs muted" style={{ marginTop: 4 }}>{s.sub}</div>
+          <div key={s.label} className="holiday-list-card">
+            <div className="holiday-list-card-title">{s.label}</div>
+            <div className="holiday-card-count" style={{ marginTop: 4 }}>{s.value}</div>
+            <div className="holiday-card-desc-text" style={{ marginTop: 4 }}>{s.sub}</div>
           </div>
         ))}
       </div>
 
-      <div className="card">
-        <div className="card-header-row">
+      <div className="card" style={{"marginTop": "24px"}}>
+        <div className="flex justify-between table-toolbar">
           <div className="card-title-block">
-            <h2>Holiday Calendar 2026</h2>
-            <p>Official public, religious, optional and company holidays</p>
+            <h2 className="text text-lg font-semibold table-title">Holiday Calendar 2026</h2>
+            <p className="text text-sm text-muted" style={{"marginTop":"2px"}}>Official public, religious, optional and company holidays</p>
           </div>
-          <button className="btn btn-outline btn-pill">
-            <Download className="icon" /> Download
-          </button>
+          <div className="row row-gap-2 row-wrap align-center">
+            {/* <select className="select-native" value={loc} onChange={(e) => setLoc(e.target.value)}>
+              {locations.map((l) => (
+                <option key={l} value={l}>{l}</option>
+              ))}
+            </select> */}
+
+            <div className="leave-filter-dropdown">
+              <Dropdown1899
+                    value={loc}
+                    onChange={(e)=>{setLoc(e)}}
+                    placeholder="Filter Status"
+                    options={[
+                      { label: "All Locations", value: "All Locations" },
+                      { label: "All Offices", value: "All Offices" },
+                      { label: "India", value: "India" },
+                      { label: "USA", value: "USA" },
+                    ]}
+                  />
+          </div>
+            <CustomButton>
+                  <Download className="custom-button-icon" />
+                  Download
+                </CustomButton>
+          </div>
         </div>
 
         <div className="row row-gap-2 row-wrap" style={{ padding: "0 16px 12px", alignItems: "center" }}>
-          <Filter className="svg-sm muted" />
+          <Filter className="svg-sm muted filter-icon" />
           {filters.map((f) => (
             <button
               key={f}
@@ -87,11 +115,7 @@ export default function Holidays() {
             </button>
           ))}
           <div style={{ marginLeft: "auto" }}>
-            <select className="select-native" value={loc} onChange={(e) => setLoc(e.target.value)}>
-              {locations.map((l) => (
-                <option key={l} value={l}>{l}</option>
-              ))}
-            </select>
+
           </div>
         </div>
 

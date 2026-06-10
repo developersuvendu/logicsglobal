@@ -79,6 +79,7 @@
 }
 .table-toolbar {
    padding: 20px;
+   border-bottom: 1px solid #ffffff;
 }
 .filter-icon {
     width: 16px;
